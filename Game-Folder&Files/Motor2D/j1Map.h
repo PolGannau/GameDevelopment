@@ -6,26 +6,40 @@
 #include "p2Point.h"
 #include "j1Module.h"
 
-// TODO 1: Create a struct for the map layer
+// TODO 5: Create a generic structure to hold properties
+// TODO 7: Our custom properties should have one method
+// to ask for the value of a custom property
 // ----------------------------------------------------
+struct Properties
+{
+};
 
-struct MapLayer_Data
+// ----------------------------------------------------
+struct MapLayer
 {
 	p2SString	name;
 	uint		width = 0u;
 	uint		height = 0u;
 	uint*		data = nullptr;
-	~MapLayer_Data(){if (data != nullptr) delete[] data;}
+	Properties	properties;
+
+	MapLayer() : data(NULL)
+	{}
+
+	~MapLayer()
+	{
+		RELEASE(data);
+	}
+
+	inline uint Get(int x, int y) const
+	{
+		return data[(y*width) + x];
+	}
 };
-
-	// TODO 6: Short function to get the value of x,y
-
-
 
 // ----------------------------------------------------
 struct TileSet
 {
-	// TODO 7: Create a method that receives a tile id and returns it's Rectfind the Rect associated with a specific tile id
 	SDL_Rect GetTileRect(int id) const;
 
 	p2SString			name;
@@ -60,8 +74,7 @@ struct MapData
 	SDL_Color			background_color;
 	MapTypes			type;
 	p2List<TileSet*>	tilesets;
-	// TODO 2: Add a list/array of layers to the map!
-	p2List<MapLayer_Data*>		MapLayer;
+	p2List<MapLayer*>		MapLayer;
 };
 
 // ----------------------------------------------------
@@ -86,26 +99,22 @@ public:
 	// Load new map
 	bool Load(const char* path);
 
-	// TODO 8: Create a method that translates x,y coordinates from map positions to world positions
 	iPoint MapToWorld(int x, int y) const;
-
+	iPoint WorldToMap(int x, int y) const;
 
 private:
 
 	bool LoadMap();
 	bool LoadTilesetDetails(pugi::xml_node& tileset_node, TileSet* set);
 	bool LoadTilesetImage(pugi::xml_node& tileset_node, TileSet* set);
-	// TODO 3: Create a method that loads a single laye
-	bool LoadLayer(pugi::xml_node& node, MapLayer_Data* layer);
+	bool LoadLayer(pugi::xml_node& node, MapLayer* layer);
+	bool LoadProperties(pugi::xml_node& node, Properties& properties);
+
+	TileSet* GetTilesetFromTileId(int id) const;
 
 public:
 
 	MapData data;
-
-	inline uint Get(int x, int y) const
-	{
-		return (y * (data.width) + x);
-	}
 
 private:
 
