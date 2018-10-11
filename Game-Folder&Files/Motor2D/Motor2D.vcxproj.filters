@@ -110,5 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Game\maps\hello2.tmx" />
+    <None Include="..\Game\maps\Stage1.tmx" />
   </ItemGroup>
 </Project>

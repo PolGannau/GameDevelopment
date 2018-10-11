@@ -31,11 +31,8 @@ void j1Map::Draw()
 	if(map_loaded == false)
 		return;
 
-	// TODO 5: Prepare the loop to draw all tilesets + Blit
 	p2List_item<MapLayer*>* map_item = data.MapLayer.start;
-	
-	while (map_item != nullptr)
-	{
+	while (map_item != NULL) {
 		MapLayer* layer = map_item->data;
 		for (int y = 0; y < data.height; ++y)
 		{
@@ -50,7 +47,7 @@ void j1Map::Draw()
 						SDL_Rect r = tileset->GetTileRect(tile_id);
 						iPoint pos = MapToWorld(x, y);
 
-						App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+						App->render->Blit(tileset->texture, pos.x, pos.y, &r, SDL_FLIP_NONE, layer->parallaxSpeed);
 					}
 				}
 			}
@@ -61,17 +58,16 @@ void j1Map::Draw()
 
 TileSet* j1Map::GetTilesetFromTileId(int id) const
 {
-	// TODO 3: Complete this method so we pick the right
-	// Tileset based on a tile id
+	p2List_item<TileSet*>* item = data.tilesets.end;
 
-	p2List_item<TileSet*>* t = data.tilesets.start;
-
-	if (id >= t->next->data->firstgid)
+	while (item)
 	{
-		t = t->next;
-	}
+		if (id < item->data->firstgid)
+			return item->prev->data;
 
-	return t->data;
+		item = item->next;
+	}
+	return data.tilesets.start->data;
 }
 
 iPoint j1Map::MapToWorld(int x, int y) const

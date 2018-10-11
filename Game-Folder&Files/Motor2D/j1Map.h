@@ -21,6 +21,7 @@ struct MapLayer
 	uint		width = 0u;
 	uint		height = 0u;
 	uint*		data = nullptr;
+	uint		parallaxSpeed = 0u;
 	Properties	properties;
 
 	MapLayer() : data(NULL)
