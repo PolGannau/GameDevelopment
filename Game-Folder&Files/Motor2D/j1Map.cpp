@@ -49,7 +49,7 @@ void j1Map::Draw()
 
 						if (OnScreen(position, tileset->tile_width))
 						{
-							App->render->Blit(tileset->texture, position.x, position.y, &rect, layer->parallaxSpeed);
+							App->render->Blit(tileset->texture, position.x, position.y, &rect);
 						}
 					}
 				}
