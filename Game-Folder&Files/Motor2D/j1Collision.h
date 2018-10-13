@@ -23,7 +23,7 @@ struct Collider
 {
 	SDL_Rect			rect;
 	bool				to_delete = false;
-	COLLIDER_TYPE		type = COLLIDER_NONE;
+	COLLIDER_TYPE		type;
 	j1Module*			callback = nullptr;
 	bool				enable = true;
 
@@ -56,7 +56,7 @@ struct Collider
 
 struct ColliderDistance							//Used to advance collisions
 {
-	COLLIDER_TYPE			type;
+	COLLIDER_TYPE			typeNearColl;
 
 	int						squaredDistance;
 	bool					posX = false;		//Positive X
@@ -88,11 +88,8 @@ public:
 	~j1Collision();
 
 	Collider* AddCollider(SDL_Rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
-	p2List<Collider*> GetColliderByType(COLLIDER_TYPE type);
-	void CollisionCorrection(Collider* const collider1, fPoint & speed, fPoint &position);
 	void GodMode();
 	void DebugDraw();
-	bool god = false, god_used = false;
 
 	ColliderDistance			distance;
 	ColliderDistance			NegativeX_Distance;

@@ -45,5 +45,76 @@ j1Collision :: ~j1Collision() {}
 
 bool j1Collision::PreUpdate()
 {
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] != nullptr && colliders[i]->to_delete == true)
+		{
+			delete colliders[i];
+			colliders[i] = nullptr;
+		}
+	}
 
+	Collider*		coll1;
+	Collider*		coll2;
+
+	NegativeX_Distance.squaredDistance = 9999;
+	NegativeY_Distance.squaredDistance = 9999;
+	PositiveX_Distance.squaredDistance = 9999;
+	PositiveY_Distance.squaredDistance = 9999;
+
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] == nullptr)continue;
+
+		coll1 = colliders[i];
+
+		for (uint j = i + 1; j < MAX_COLLIDERS; ++j)
+		{
+			if (colliders[j] == nullptr)continue;
+
+			coll2 = colliders[j];
+
+			if (coll1->enable && coll2->enable)
+			{
+				if (coll1->CheckCollision(coll2->rect) == true)
+				{
+					if (matrix[coll1->type][coll2->type] && coll1->callback)
+						coll1->callback->OnCollision(coll1, coll2);
+
+					if (matrix[coll2->type][coll1->type] && coll2->callback)
+						coll2->callback->OnCollision(coll2, coll1);
+				}
+
+				if (coll2->type == COLLIDER_PLAYER)
+				{
+					distance = coll2->ColliderDistance(coll1->rect, coll1->type);
+
+					if (distance.posY && distance.squaredDistance < PositiveY_Distance.squaredDistance)
+					{
+						PositiveY_Distance.squaredDistance = distance.squaredDistance;
+						PositiveY_Distance.typeNearColl = distance.typeNearColl;
+					}
+
+					else if (distance.negY && distance.squaredDistance < NegativeY_Distance.squaredDistance)
+					{
+						NegativeY_Distance.squaredDistance = distance.squaredDistance;
+						NegativeY_Distance.typeNearColl = distance.typeNearColl;
+					}
+
+					else if (distance.posX && distance.squaredDistance < PositiveX_Distance.squaredDistance)
+					{
+						PositiveX_Distance.squaredDistance = distance.squaredDistance;
+						PositiveX_Distance.typeNearColl = distance.typeNearColl;
+					}
+
+					else if (distance.negX && distance.squaredDistance < NegativeX_Distance.squaredDistance)
+					{
+						NegativeX_Distance.squaredDistance = distance.squaredDistance;
+						NegativeX_Distance.typeNearColl = distance.typeNearColl;
+					}
+				}
+			}
+		}
+	}
+	return true;
 }
