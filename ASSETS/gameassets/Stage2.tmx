@@ -144,9 +144,6 @@
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="257" name="9R0I6mO" tilewidth="32" tileheight="32" tilecount="0" columns="6">
-  <image source="9R0I6mO.png" width="192" height="64"/>
- </tileset>
  <tileset firstgid="257" name="snow" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="snow.png" width="1920" height="1080"/>
  </tileset>
