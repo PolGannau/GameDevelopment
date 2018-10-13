@@ -21,7 +21,7 @@ struct MapLayer
 	uint		width = 0u;
 	uint		height = 0u;
 	uint*		data = nullptr;
-	uint		parallaxSpeed = 0u;
+	float		parallaxSpeed = 0.0f;
 	Properties	properties;
 
 	MapLayer() : data(NULL)
@@ -102,6 +102,8 @@ public:
 
 	iPoint MapToWorld(int x, int y) const;
 	iPoint WorldToMap(int x, int y) const;
+
+	bool OnScreen(const iPoint pos, const int width);
 
 private:
 

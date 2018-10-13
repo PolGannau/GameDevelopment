@@ -38,16 +38,19 @@ void j1Map::Draw()
 		{
 			for (int x = 0; x < data.width; ++x)
 			{
-				int tile_id = layer->Get(x, y);
-				if (tile_id > 0)
+				int tileID = layer->Get(x, y);
+				if (tileID > 0)
 				{
-					TileSet* tileset = GetTilesetFromTileId(tile_id);
+					TileSet* tileset = GetTilesetFromTileId(tileID);
 					if (tileset != nullptr)
 					{
-						SDL_Rect r = tileset->GetTileRect(tile_id);
-						iPoint pos = MapToWorld(x, y);
+						SDL_Rect rect = tileset->GetTileRect(tileID);
+						iPoint position = MapToWorld(x, y);
 
-						App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+						if (OnScreen(position, tileset->tile_width))
+						{
+							App->render->Blit(tileset->texture, position.x, position.y, &rect);
+						}
 					}
 				}
 			}
@@ -403,6 +406,13 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 	}
 
 	return ret;
+}
+
+bool j1Map::OnScreen(const iPoint pos,const int width)
+{
+	if (pos.x < (App->render->viewport.x - width) || pos.x >(App->render->viewport.x + App->render->viewport.w))return false;
+
+	return true;
 }
 
 // Load a group of properties from a node and fill a list with it
