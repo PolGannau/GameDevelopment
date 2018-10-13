@@ -30175,7 +30175,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Meta" width="500" height="15" opacity="0.5">
+ <layer name="Meta" width="500" height="15" opacity="0.49">
   <properties>
    <property name="parallax_speed" type="int" value="1"/>
   </properties>
