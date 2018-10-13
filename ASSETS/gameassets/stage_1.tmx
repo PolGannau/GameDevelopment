@@ -3,41 +3,65 @@
  <tileset firstgid="1" name="goodly-2x" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="goodly-2x.png" width="512" height="512"/>
   <tile id="1">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="1" width="31" height="31"/>
    </objectgroup>
   </tile>
   <tile id="16">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="1" y="1" width="30" height="30"/>
    </objectgroup>
   </tile>
   <tile id="17">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="-1" width="33" height="32"/>
    </objectgroup>
   </tile>
   <tile id="18">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="2" x="0" y="0" width="31" height="32"/>
    </objectgroup>
   </tile>
   <tile id="19">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="1" width="31" height="31"/>
    </objectgroup>
   </tile>
   <tile id="20">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="32" height="31"/>
    </objectgroup>
   </tile>
   <tile id="21">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="31" height="32"/>
    </objectgroup>
   </tile>
   <tile id="22">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="32" height="33"/>
    </objectgroup>
@@ -53,11 +77,17 @@
    </objectgroup>
   </tile>
   <tile id="34">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="31" height="31"/>
    </objectgroup>
   </tile>
   <tile id="35">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="31" height="33"/>
    </objectgroup>
@@ -73,11 +103,17 @@
    </objectgroup>
   </tile>
   <tile id="49">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="32" height="31"/>
    </objectgroup>
   </tile>
   <tile id="50">
+   <properties>
+    <property name="Collision" type="bool" value="true"/>
+   </properties>
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="0" y="0" width="30" height="31"/>
    </objectgroup>
@@ -93,6 +129,9 @@
   <image source="Ocean.png" width="480" height="216"/>
  </tileset>
  <layer name="Background" width="500" height="15">
+  <properties>
+   <property name="Parallax Speed" value="0,5"/>
+  </properties>
   <data>
    <tile gid="266"/>
    <tile gid="266"/>
