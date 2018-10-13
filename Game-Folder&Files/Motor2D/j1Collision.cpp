@@ -118,3 +118,65 @@ bool j1Collision::PreUpdate()
 	}
 	return true;
 }
+
+bool j1Collision::Update(float dt)
+{
+	DebugDraw();
+
+	return true;
+}
+
+bool j1Collision::CleanUp()
+{
+	LOG("Freeing all the colliders");
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] != nullptr)
+		{
+			delete colliders[i];
+			colliders[i] = nullptr;
+		}
+	}
+	return true;
+}
+
+void j1Collision::DebugDraw()
+{
+	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)debug = !debug;
+
+	if (debug == false) return;
+
+	Uint8 alpha = 80;
+
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] == nullptr) continue;
+
+		switch (colliders[i]->type)
+		{
+		case COLLIDER_NONE: // white
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+			break;
+		case COLLIDER_GROUND: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
+			break;
+		case COLLIDER_PLAYER: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case COLLIDER_PLATFORM: // magenta
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 204, alpha);
+			break;
+		case COLLIDER_DEATH: // red
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+		case COLLIDER_FINISH: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+		}
+	}
+}
+
+Collider* j1Collision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback)
+{
+
+}
