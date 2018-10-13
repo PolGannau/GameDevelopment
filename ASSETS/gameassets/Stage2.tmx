@@ -2,6 +2,103 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="Terrain" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="goodly-2x.png" width="512" height="512"/>
+  <tile id="137">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="0">
+     <polyline points="0,0 0,17 13,31 19,32 30,19 30,2 1,1"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="152">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="3" x="1" y="1" width="30" height="30"/>
+   </objectgroup>
+  </tile>
+  <tile id="153">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="1" width="31" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="154">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="0" width="31" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="155">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="1" width="31" height="30"/>
+   </objectgroup>
+  </tile>
+  <tile id="156">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="1" y="-1">
+     <polyline points="0,0 -1,20 13,33 28,33 30,3 30,1 -1,1"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="157">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="1" width="32" height="30"/>
+   </objectgroup>
+  </tile>
+  <tile id="158">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="-1" y="0">
+     <polyline points="0,0 1,31 22,32 32,17 32,1 0,-1"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="168">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="3" y="0" width="29" height="31"/>
+   </objectgroup>
+  </tile>
+  <tile id="169">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="0" width="32" height="33"/>
+   </objectgroup>
+  </tile>
+  <tile id="170">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="-1" y="0" width="32" height="31"/>
+   </objectgroup>
+  </tile>
+  <tile id="171">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="2" x="3" y="0" width="26" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="184">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="3" y="1">
+     <polyline points="0,0 0,19 10,29 29,30 29,-1 1,-1"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="185">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="0" width="32" height="31"/>
+   </objectgroup>
+  </tile>
+  <tile id="186">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="2" x="0" y="31">
+     <polyline points="0,0 19,0 29,-9 29,-30 -1,-30 0,0"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="187">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="3" y="-1">
+     <polyline points="0,0 0,21 9,32 16,31 25,21 25,2 2,1"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="189">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="0" y="1" width="31" height="7"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Background" width="500" height="15">
   <data>
@@ -30019,7 +30116,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Meta" width="500" height="15">
+ <layer name="Meta" width="500" height="15" opacity="0.5">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
