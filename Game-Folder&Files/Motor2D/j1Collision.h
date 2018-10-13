@@ -4,15 +4,19 @@
 #define MAX_COLLIDERS 500
 
 #include "j1Module.h"
+#include "p2List.h"
+#include "p2Point.h"
 #include "SDL/include/SDL_rect.h"
 
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
-	COLLIDER_PLATFORM,
-	COLLIDER_PLAYER,
-	COLLIDER_GROUND,
-	COLLIDER_LIMIT,
+	COLLIDER_PLATFORM,			//Platforms
+	COLLIDER_PLAYER,			//Player
+	COLLIDER_DEATH,				//Instant Death Collider, as when play falls into void
+	COLLIDER_GROUND,			//Ground
+	COLLIDER_FINISH,			//End Level
+	COLLIDER_MAX,
 };
 
 struct Collider
@@ -47,11 +51,57 @@ struct Collider
 	}
 	bool CheckCollision(const SDL_Rect& r) const;
 
-	class j1Collision : public j1Module
-	{
-	private:
-		Collider* colliders[MAX_COLLIDERS];
-	};
+	ColliderDistance ColliderDistance(SDL_Rect& collider_rect, COLLIDER_TYPE& collider_type) const;
 };
+
+struct ColliderDistance							//Used to advance collisions
+{
+	COLLIDER_TYPE			type;
+
+	int						squaredDistance;
+	bool					posX = false;		//Positive X
+	bool					negX = false;		//Negative X
+	bool					posY = false;		//Positive Y
+	bool					negY = false;		//Negative Y
+};
+
+
+
+
+class j1Collision : public j1Module
+{
+
+private:
+
+	Collider*				colliders[MAX_COLLIDERS];
+	bool					matrix[COLLIDER_MAX][COLLIDER_MAX];
+	bool					debug = false;
+
+public:
+
+	j1Collision();
+
+	bool PreUpdate();
+	bool Update(float dt);
+	bool CleanUp();
+
+	~j1Collision();
+
+	Collider* AddCollider(SDL_Rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
+	p2List<Collider*> GetColliderByType(COLLIDER_TYPE type);
+	void CollisionCorrection(Collider* const collider1, fPoint & speed, fPoint &position);
+	void GodMode();
+	void DebugDraw();
+	bool god = false, god_used = false;
+
+	ColliderDistance			distance;
+	ColliderDistance			NegativeX_Distance;
+	ColliderDistance			PositiveX_Distance;
+	ColliderDistance			NegativeY_Distance;
+	ColliderDistance			PositiveY_Distance;
+	COLLIDER_TYPE				type;
+
+};
+
 
 #endif // !_j1COLLISION_H_
