@@ -130,7 +130,7 @@
  </tileset>
  <layer name="Background" width="500" height="15">
   <properties>
-   <property name="Parallax Speed" value="0,5"/>
+   <property name="Parallax Speed" type="float" value="0.5"/>
   </properties>
   <data>
    <tile gid="266"/>
