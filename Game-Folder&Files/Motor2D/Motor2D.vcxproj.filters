@@ -35,7 +35,7 @@
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
     <ClCompile Include="j1Collision.cpp">
-      <Filter>Desenvolupament  ========</Filter>
+      <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,7 @@
   <ItemGroup>
     <None Include="..\Game\maps\hello2.tmx" />
     <None Include="..\Game\maps\Stage1.tmx" />
+    <None Include="..\Game\maps\stage_1.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Game\save_game.xml" />

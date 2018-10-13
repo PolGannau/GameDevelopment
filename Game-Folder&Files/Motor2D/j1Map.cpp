@@ -61,16 +61,12 @@ void j1Map::Draw()
 
 TileSet* j1Map::GetTilesetFromTileId(int id) const
 {
-	p2List_item<TileSet*>* item = data.tilesets.end;
-
-	while (item)
-	{
-		if (id < item->data->firstgid)
-			return item->prev->data;
-
-		item = item->next;
-	}
-	return data.tilesets.start->data;
+	p2List_item<TileSet*>* item_tileset = data.tilesets.end;
+    while (item_tileset->data->firstgid > id)
+    {
+        item_tileset = item_tileset->prev;
+    }
+    return item_tileset->data;
 }
 
 iPoint j1Map::MapToWorld(int x, int y) const
