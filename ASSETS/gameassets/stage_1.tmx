@@ -130,7 +130,7 @@
  </tileset>
  <layer name="Background" width="500" height="15">
   <properties>
-   <property name="Parallax Speed" type="float" value="0.5"/>
+   <property name="parallax_speed" type="float" value="0.5"/>
   </properties>
   <data>
    <tile gid="266"/>
@@ -7636,6 +7636,9 @@
   </data>
  </layer>
  <layer name="Terrain" width="500" height="15">
+  <properties>
+   <property name="parallax_speed" type="int" value="1"/>
+  </properties>
   <data>
    <tile gid="34"/>
    <tile gid="34"/>
@@ -15140,6 +15143,9 @@
   </data>
  </layer>
  <layer name="Objects" width="500" height="15">
+  <properties>
+   <property name="parallax_speed" type="int" value="1"/>
+  </properties>
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
