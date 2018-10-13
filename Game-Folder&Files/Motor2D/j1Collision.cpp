@@ -123,6 +123,8 @@ bool j1Collision::Update(float dt)
 {
 	DebugDraw();
 
+	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) GodMode();
+
 	return true;
 }
 
@@ -160,8 +162,9 @@ void j1Collision::DebugDraw()
 		case COLLIDER_GROUND: // blue
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
-		case COLLIDER_PLAYER: // green
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+		case COLLIDER_PLAYER:
+			if (!godmode)App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);	//Green Collider when the player is vulnerable
+			if(godmode)App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, 0);	//White Collider & without alpha when the player is invulnerable
 			break;
 		case COLLIDER_PLATFORM: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 204, alpha);
@@ -267,4 +270,11 @@ ColliderDistance Collider::ColliderDistanceNear(SDL_Rect& collRect, COLLIDER_TYP
 		}
 	}
 	return dist;
+}
+
+void j1Collision::GodMode()
+{
+		godmode = !godmode;
+		matrix[COLLIDER_PLAYER][COLLIDER_DEATH] = !matrix[COLLIDER_PLAYER][COLLIDER_DEATH];
+		matrix[COLLIDER_DEATH][COLLIDER_PLAYER] = !matrix[COLLIDER_DEATH][COLLIDER_PLAYER];
 }
