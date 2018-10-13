@@ -57,10 +57,10 @@ bool j1Collision::PreUpdate()
 	Collider*		coll1;
 	Collider*		coll2;
 
-	NegativeX_Distance.squaredDistance = 9999;
-	NegativeY_Distance.squaredDistance = 9999;
-	PositiveX_Distance.squaredDistance = 9999;
-	PositiveY_Distance.squaredDistance = 9999;
+	NegativeX_Distance.relativeDistance = 9999;
+	NegativeY_Distance.relativeDistance = 9999;
+	PositiveX_Distance.relativeDistance = 9999;
+	PositiveY_Distance.relativeDistance = 9999;
 
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
@@ -87,29 +87,29 @@ bool j1Collision::PreUpdate()
 
 				if (coll2->type == COLLIDER_PLAYER)
 				{
-					distance = coll2->ColliderDistance(coll1->rect, coll1->type);
+					distance = coll2->ColliderDistanceNear(coll1->rect, coll1->type);
 
-					if (distance.posY && distance.squaredDistance < PositiveY_Distance.squaredDistance)
+					if (distance.posY && distance.relativeDistance < PositiveY_Distance.relativeDistance)
 					{
-						PositiveY_Distance.squaredDistance = distance.squaredDistance;
+						PositiveY_Distance.relativeDistance = distance.relativeDistance;
 						PositiveY_Distance.typeNearColl = distance.typeNearColl;
 					}
 
-					else if (distance.negY && distance.squaredDistance < NegativeY_Distance.squaredDistance)
+					else if (distance.negY && distance.relativeDistance < NegativeY_Distance.relativeDistance)
 					{
-						NegativeY_Distance.squaredDistance = distance.squaredDistance;
+						NegativeY_Distance.relativeDistance = distance.relativeDistance;
 						NegativeY_Distance.typeNearColl = distance.typeNearColl;
 					}
 
-					else if (distance.posX && distance.squaredDistance < PositiveX_Distance.squaredDistance)
+					else if (distance.posX && distance.relativeDistance < PositiveX_Distance.relativeDistance)
 					{
-						PositiveX_Distance.squaredDistance = distance.squaredDistance;
+						PositiveX_Distance.relativeDistance = distance.relativeDistance;
 						PositiveX_Distance.typeNearColl = distance.typeNearColl;
 					}
 
-					else if (distance.negX && distance.squaredDistance < NegativeX_Distance.squaredDistance)
+					else if (distance.negX && distance.relativeDistance < NegativeX_Distance.relativeDistance)
 					{
-						NegativeX_Distance.squaredDistance = distance.squaredDistance;
+						NegativeX_Distance.relativeDistance = distance.relativeDistance;
 						NegativeX_Distance.typeNearColl = distance.typeNearColl;
 					}
 				}
@@ -176,7 +176,95 @@ void j1Collision::DebugDraw()
 	}
 }
 
+bool Collider::CheckCollision(const SDL_Rect& r)const
+{
+	if ((r.x + r.w <= rect.x) || (r.x >= rect.x + rect.w) || (r.y + r.h <= rect.y) || (r.y >= rect.y + rect.h)) return false;
+	else return true;
+}
+
 Collider* j1Collision::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback)
 {
+	Collider* ret = nullptr;
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] == nullptr)
+		{
+			ret = colliders[i] = new Collider(rect, type, callback);
+			break;
+		}
+	}
+	return ret;
+}
 
+COLLIDER_TYPE j1Collision::DefineColliderByNum(int type_asInt)
+{
+	switch (type_asInt)
+	{
+	case 0:
+		return COLLIDER_PLAYER;
+	case 1:
+		return COLLIDER_GROUND;
+	case 2:
+		return COLLIDER_PLATFORM;
+	case 3:
+		return COLLIDER_FINISH;
+	case 4:
+		return COLLIDER_DEATH;
+	default:
+		return COLLIDER_NONE;
+	}
+}
+
+ColliderDistance Collider::ColliderDistanceNear(SDL_Rect& collRect, COLLIDER_TYPE& type_coll)const
+{
+	ColliderDistance dist;
+	dist.typeNearColl = type_coll;
+	dist.relativeDistance = 9999;
+
+	if (collRect.x >= rect.x + rect.w)
+	{
+		if (collRect.y + collRect.h > rect.y && collRect.y < rect.y + rect.h)
+		{
+			dist.posX = true;
+			dist.negX = false;
+			dist.negY = false;
+			dist.posY = false;
+			dist.relativeDistance = collRect.x - (rect.x + rect.w);
+		}
+	}
+	if (collRect.x + collRect.w <= rect.x)
+	{
+		if (collRect.y + collRect.h > rect.y &&collRect.y < rect.y + rect.h)
+		{
+			dist.negX = true;
+			dist.posX = false;
+			dist.negY = false;
+			dist.posY = false;
+			dist.relativeDistance = rect.x - (collRect.x + collRect.w);
+		}
+	}
+	if (collRect.y + collRect.h <= rect.y)
+	{
+		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
+		{
+			dist.negY = true;
+			dist.posY = false;
+			dist.posX = false;
+			dist.negX = false;
+			dist.relativeDistance = rect.y - (collRect.y + collRect.h);
+		}
+	}
+	if (collRect.y >= rect.y + rect.h)
+	{
+
+		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
+		{
+			dist.posY = true;
+			dist.negY = false;
+			dist.negX= false;
+			dist.posX = false;
+			dist.relativeDistance = collRect.y - (rect.y + rect.h);
+		}
+	}
+	return dist;
 }

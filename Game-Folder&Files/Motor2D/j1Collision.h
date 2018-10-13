@@ -51,14 +51,14 @@ struct Collider
 	}
 	bool CheckCollision(const SDL_Rect& r) const;
 
-	ColliderDistance ColliderDistance(SDL_Rect& collider_rect, COLLIDER_TYPE& collider_type) const;
+	ColliderDistance ColliderDistanceNear(SDL_Rect& collider_rect, COLLIDER_TYPE& collider_type) const;
 };
 
 struct ColliderDistance							//Used to advance collisions
 {
 	COLLIDER_TYPE			typeNearColl;
 
-	int						squaredDistance;
+	int						relativeDistance;
 	bool					posX = false;		//Positive X
 	bool					negX = false;		//Negative X
 	bool					posY = false;		//Positive Y
@@ -87,6 +87,7 @@ public:
 
 	~j1Collision();
 
+	COLLIDER_TYPE DefineColliderByNum(int type);
 	Collider* AddCollider(SDL_Rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
 	void GodMode();
 	void DebugDraw();
