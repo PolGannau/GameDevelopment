@@ -62,6 +62,11 @@
     <object id="1" x="0" y="0" width="31" height="33"/>
    </objectgroup>
   </tile>
+  <tile id="44">
+   <objectgroup color="#0000ff" draworder="index">
+    <object id="1" x="1" y="1" width="30" height="8"/>
+   </objectgroup>
+  </tile>
   <tile id="48">
    <objectgroup color="#0000ff" draworder="index">
     <object id="1" x="1" y="1" width="30" height="31"/>
