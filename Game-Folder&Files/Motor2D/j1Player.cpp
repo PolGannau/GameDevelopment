@@ -3,11 +3,15 @@
 #include "j1Scene.h"
 #include "j1Textures.h"
 #include "j1App.h"
-#include "p2Point.h"
-#include "p2Log.h"
-#include "p2Defs.h"
 #include "j1Input.h"
 #include "j1Map.h"
+#include "j1Audio.h"
+#include "j1FadeToBlack.h"
+#include "j1Collision.h"
+
+#include "p2Defs.h"
+#include "p2Log.h"
+#include "p2Point.h"
 
 
 j1Player::j1Player() :j1Module()
@@ -61,23 +65,13 @@ bool j1Player::Start()
 
 bool j1Player::PreUpdate()
 {
-	DebugImput();
-	if (godMode)
-	{
-		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-			position.x -= 5;
-
-		else if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-			position.y -= 5;
-
-		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-			position.y += 5;
-		else if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-			position.x += 5;
-	}
-	else
-		CheckState();
+	DebugInput();
+	if (!godMode)CheckKeyboardState();
 
 	return true;
 }
 
+bool j1Player::Update(float dt)
+{
+
+}

@@ -3,6 +3,7 @@
 
 #include "j1Module.h"
 #include "p2List.h"
+#include "j1Collision.h"
 #include "SDL/include/SDL_render.h"
 
 struct SDL_Texture;
@@ -32,7 +33,7 @@ public:
 
 	bool PreUpdate();
 
-	bool Update();
+	bool Update(float dt);
 
 	bool PostUpdate();
 
@@ -42,16 +43,16 @@ public:
 
 	bool Save(pugi::xml_node&) const;
 
-	void CheckState();
+	void CheckKeyboardState();
 
-	void PerformActions();
+	void PlayerActions();
 
 	void OnCollision(Collider* c1, Collider* c2);
 
 private:
 
 	void Draw();
-	void DebugImput();
+	void DebugInput();
 	p2Animation LoadAnimation(p2SString name);
 
 public:
@@ -66,7 +67,7 @@ public:
 	SDL_Rect		coll_rect;
 	Collider*		player_coll = nullptr;
 	COLLIDER_TYPE	coll_type = COLLIDER_NONE;
-	PlayerState		state = NONE_STATE;
+	PlayerState		state = NO_STATE;
 	bool			godMode = false;
 
 private:
