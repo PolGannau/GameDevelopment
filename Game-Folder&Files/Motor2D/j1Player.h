@@ -73,17 +73,17 @@ public:
 
 private:
 
-	p2SString		path;
-	Animation*	current_animation = nullptr;
-	Animation		idle_animation;
-	Animation		run_animation;
-	Animation		jump_animation;
-	Animation		afterjump_animation;
-	Animation		dead_animation;
+	p2SString				path;
+	Animation*				current_animation = nullptr;
+	Animation				idle_animation;
+	Animation				run_animation;
+	Animation				jump_animation;
+	Animation				afterjump_animation;
+	Animation				dead_animation;
 
-	pugi::xml_document playerFile;
+	pugi::xml_document		playerFile;
 
-	SDL_Texture*		playerSprites = nullptr;
-	SDL_RendererFlip	flipX = SDL_FLIP_NONE;
+	SDL_Texture*			playerSprites = nullptr;
+	SDL_RendererFlip		flipX = SDL_FLIP_NONE;
 };
 #endif // !__J1PLAYER_H__

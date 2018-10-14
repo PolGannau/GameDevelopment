@@ -25,6 +25,8 @@ bool j1Player::Awake(pugi::xml_node& config)
 
 	LOG("Awakening Player Module...");
 
+	state = IDLE_STATE;
+
 	path.create(config.child("path").child_value());
 
 	return ret;
@@ -312,6 +314,7 @@ Animation j1Player::LoadAnimation(p2SString name) {
 	Animation anim;
 	for (pugi::xml_node frames_node = playerFile.child("player").child("animation").child(name.GetString()).child("frame"); frames_node; frames_node = frames_node.next_sibling("frame"))
 	{
+		LOG("Loading animation %i",frames_node);
 		frames.x = frames_node.attribute("x").as_int();
 		frames.y = frames_node.attribute("y").as_int();
 		frames.h = frames_node.attribute("h").as_int();
@@ -319,7 +322,7 @@ Animation j1Player::LoadAnimation(p2SString name) {
 
 		anim.PushBack({ frames.x, frames.y, frames.w, frames.h });
 	}
-	anim.speed = playerFile.child("player").child("animation").child(name.GetString()).attribute("speed").as_float();
+	anim.speed= playerFile.child("player").child("animation").child(name.GetString()).attribute("speed").as_float();
 
 	return anim;
 
