@@ -51,7 +51,7 @@ struct Collider
 	}
 	bool CheckCollision(const SDL_Rect& r) const;
 
-	ColliderDistance ColliderDistanceNear(SDL_Rect& collider_rect, COLLIDER_TYPE& collider_type) const;
+	ColliderDistance ColliderDistanceNear(SDL_Rect& collRect, COLLIDER_TYPE& type_coll) const;
 };
 
 struct ColliderDistance							//Used to advance collisions
