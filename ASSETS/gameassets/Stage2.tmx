@@ -147,6 +147,31 @@
  <tileset firstgid="257" name="snow" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="snow.png" width="1920" height="1080"/>
  </tileset>
+ <tileset firstgid="2237" name="daxbotsheet" tilewidth="64" tileheight="64" tilecount="16" columns="4">
+  <image source="daxbotsheet.png" width="256" height="272"/>
+  <tile id="1">
+   <animation>
+    <frame tileid="1" duration="125"/>
+    <frame tileid="2" duration="125"/>
+    <frame tileid="3" duration="125"/>
+    <frame tileid="0" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="5">
+   <animation>
+    <frame tileid="5" duration="125"/>
+    <frame tileid="6" duration="125"/>
+    <frame tileid="7" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="9">
+   <animation>
+    <frame tileid="9" duration="125"/>
+    <frame tileid="10" duration="125"/>
+    <frame tileid="11" duration="125"/>
+   </animation>
+  </tile>
+ </tileset>
  <layer name="Background" width="500" height="15">
   <properties>
    <property name="Parallax Speed" type="float" value="0.5"/>
