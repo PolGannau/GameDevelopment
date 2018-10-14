@@ -30185,7 +30185,7 @@
   <object id="20" name="Platform" type="COLLIDER_PLATFORM" x="352" y="320" width="222" height="64"/>
  </objectgroup>
  <objectgroup name="ColliderLogics">
-  <object id="24" name="Death" type="COLLIDER_DEATH" x="606" y="438" width="194" height="42"/>
+  <object id="24" name="Death" type="COLLIDER_DEATH" x="606" y="447" width="194" height="33"/>
   <object id="25" name="Finish" type="COLLIDER_FINISH" x="15872" y="257" width="96" height="126"/>
  </objectgroup>
 </map>

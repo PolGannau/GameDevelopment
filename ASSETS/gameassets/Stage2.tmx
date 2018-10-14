@@ -37700,7 +37700,7 @@
   <object id="2" name="Platform" type="COLLIDER_PLATFORM" x="94" y="161" width="97" height="29"/>
  </objectgroup>
  <objectgroup name="CollidersLogics">
-  <object id="3" name="Death" type="COLLIDER_DEATH" x="670" y="443" width="322" height="36"/>
+  <object id="3" name="Death" type="COLLIDER_DEATH" x="670" y="448" width="322" height="31"/>
   <object id="4" name="Finish" type="COLLIDER_FINISH" x="15872" y="255" width="95" height="129"/>
  </objectgroup>
 </map>
