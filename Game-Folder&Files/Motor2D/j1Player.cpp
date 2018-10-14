@@ -101,6 +101,16 @@ bool j1Player::CleanUp()
 	return true;
 }
 
+void j1Player::CheckKeyboardState()
+{
+
+}
+
+void j1Player::Draw()
+{
+	
+}
+
 bool j1Player::Load(pugi::xml_node& nodePlayer)
 {
 
