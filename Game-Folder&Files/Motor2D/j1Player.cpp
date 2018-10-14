@@ -128,3 +128,32 @@ bool j1Player::Load(pugi::xml_node& nodePlayer)
 
 	return true;
 }
+
+bool j1Player::Save(pugi::xml_node& nodePlayer) const
+{
+	pugi::xml_node nodeState = nodePlayer.append_child("state");
+	pugi::xml_node positionPlayer = nodePlayer.append_child("position");
+	pugi::xml_node velocityPlayer = nodePlayer.append_child("velocity");
+
+	positionPlayer.append_attribute("x") = position.x;		//Save Position X
+	positionPlayer.append_attribute("y") = position.y;		//Save Position Y
+
+	velocityPlayer.append_attribute("x") = velocity.x;		//Save Velocity X
+	velocityPlayer.append_attribute("y") = velocity.y;		//Save Velocity Y
+
+	p2SString name_state;
+
+	if (state == 0) name_state = "IDLE_STATE";				//In next lines, we save the state of the character
+
+	if (state == 1) name_state = "RUN_STATE";
+
+	if (state == 2) name_state = "JUMP_STATE";
+
+	if (state == 3) name_state = "AIR_STATE";
+
+	if (state == 4) name_state = "DEATH_STATE";
+
+	if (state == 5) name_state = "GOD_STATE";
+
+	nodeState.append_attribute("value") = name_state.GetString();
+}
