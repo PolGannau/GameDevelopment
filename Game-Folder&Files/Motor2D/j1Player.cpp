@@ -61,5 +61,23 @@ bool j1Player::Start()
 
 bool j1Player::PreUpdate()
 {
+	DebugImput();
+	if (godMode)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			position.x -= 5;
 
+		else if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+			position.y -= 5;
+
+		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			position.y += 5;
+		else if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+			position.x += 5;
+	}
+	else
+		CheckState();
+
+	return true;
 }
+
