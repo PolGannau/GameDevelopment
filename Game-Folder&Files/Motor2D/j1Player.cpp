@@ -61,7 +61,7 @@ bool j1Player::Start()
 			jump_animation = LoadAnimation("jump");
 			run_animation = LoadAnimation("run");
 			dead_animation = LoadAnimation("death");
-			afterjump_animation = LoadAnimation("air");
+			afterjump_animation = LoadAnimation("afterjump");
 
 			player_collider = App->collision->AddCollider({ coll_rect.x, coll_rect.y, coll_rect.w, coll_rect.h }, coll_type, App->player);
 		}
@@ -307,26 +307,22 @@ void j1Player::DebugInputs()
 	}
 }
 
-Animation j1Player::LoadAnimation(p2SString name)
-{
-	SDL_Rect		frame;
-	Animation		playerAnimation;
-
-	LOG("Loading player animations...");
-
-	playerAnimation.speed = playerFile.child("player").child("animation").child(name.GetString()).attribute("speed").as_float();
-
-	for (pugi::xml_node nodeFrame = playerFile.child("player").child("animation").child(name.GetString()).child("frame"); nodeFrame; nodeFrame = nodeFrame.next_sibling("frame"))
+Animation j1Player::LoadAnimation(p2SString name) {
+	SDL_Rect frames;
+	Animation anim;
+	for (pugi::xml_node frames_node = playerFile.child("player").child("animation").child(name.GetString()).child("frame"); frames_node; frames_node = frames_node.next_sibling("frame"))
 	{
-		frame.x = nodeFrame.attribute("x").as_int();
-		frame.y = nodeFrame.attribute("y").as_int();
-		frame.h = nodeFrame.attribute("h").as_int();
-		frame.w = nodeFrame.attribute("w").as_int();
+		frames.x = frames_node.attribute("x").as_int();
+		frames.y = frames_node.attribute("y").as_int();
+		frames.h = frames_node.attribute("h").as_int();
+		frames.w = frames_node.attribute("w").as_int();
 
-		playerAnimation.PushBack({ frame.x, frame.y, frame.w, frame.h });
+		anim.PushBack({ frames.x, frames.y, frames.w, frames.h });
 	}
+	anim.speed = playerFile.child("player").child("animation").child(name.GetString()).attribute("speed").as_float();
 
-	return playerAnimation;
+	return anim;
+
 }
 
 bool j1Player::Load(pugi::xml_node& nodePlayer)
