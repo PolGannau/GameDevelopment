@@ -16,8 +16,8 @@ enum PlayerState
 	IDLE_STATE,
 	RUN_STATE,
 	JUMP_STATE,
-	AIR_STATE,
-	DEATH_STATE,
+	AFTERJUMP_STATE,
+	DEAD_STATE,
 	GOD_STATE
 };
 
@@ -78,7 +78,7 @@ private:
 	Animation		idle_animation;
 	Animation		run_animation;
 	Animation		jump_animation;
-	Animation		air_animation;
+	Animation		afterjump_animation;
 	Animation		dead_animation;
 
 	pugi::xml_document playerFile;

@@ -4,6 +4,7 @@
   <app>
     <title>Game Development Testbed</title>
     <organization>UPC</organization>
+    <path>save_game.xml</path>
   </app>
 	
   <renderer>

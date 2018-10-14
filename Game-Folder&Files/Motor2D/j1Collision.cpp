@@ -59,62 +59,30 @@ bool j1Collision::PreUpdate()
 	Collider*		coll1;
 	Collider*		coll2;
 
-	NegativeX_Distance.relativeDistance = 9999;
-	NegativeY_Distance.relativeDistance = 9999;
-	PositiveX_Distance.relativeDistance = 9999;
-	PositiveY_Distance.relativeDistance = 9999;
-
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if (colliders[i] == nullptr)continue;
+		// skip empty colliders
+		if (colliders[i] == nullptr)
+			continue;
 
 		coll1 = colliders[i];
 
+		// avoid checking collisions already checked
 		for (uint j = i + 1; j < MAX_COLLIDERS; ++j)
 		{
-			if (colliders[j] == nullptr)continue;
+			// skip empty colliders
+			if (colliders[j] == nullptr)
+				continue;
 
 			coll2 = colliders[j];
 
-			if (coll1->enable && coll2->enable)
+			if (coll1->CheckCollision(coll2->rect) == true)
 			{
-				if (coll1->CheckCollision(coll2->rect) == true)
-				{
-					if (matrix[coll1->type][coll2->type] && coll1->callback)
-						coll1->callback->OnCollision(coll1, coll2);
+				if (matrix[coll1->type][coll2->type] && coll1->callback)
+					coll1->callback->OnCollision(coll1, coll2);
 
-					if (matrix[coll2->type][coll1->type] && coll2->callback)
-						coll2->callback->OnCollision(coll2, coll1);
-				}
-
-				if (coll2->type == COLLIDER_PLAYER)
-				{
-					distance = coll2->ColliderDistanceNear(coll1->rect, coll1->type);
-
-					if (distance.posY && distance.relativeDistance < PositiveY_Distance.relativeDistance)
-					{
-						PositiveY_Distance.relativeDistance = distance.relativeDistance;
-						PositiveY_Distance.typeNearColl = distance.typeNearColl;
-					}
-
-					else if (distance.negY && distance.relativeDistance < NegativeY_Distance.relativeDistance)
-					{
-						NegativeY_Distance.relativeDistance = distance.relativeDistance;
-						NegativeY_Distance.typeNearColl = distance.typeNearColl;
-					}
-
-					else if (distance.posX && distance.relativeDistance < PositiveX_Distance.relativeDistance)
-					{
-						PositiveX_Distance.relativeDistance = distance.relativeDistance;
-						PositiveX_Distance.typeNearColl = distance.typeNearColl;
-					}
-
-					else if (distance.negX && distance.relativeDistance < NegativeX_Distance.relativeDistance)
-					{
-						NegativeX_Distance.relativeDistance = distance.relativeDistance;
-						NegativeX_Distance.typeNearColl = distance.typeNearColl;
-					}
-				}
+				if (matrix[coll2->type][coll1->type] && coll2->callback)
+					coll2->callback->OnCollision(coll2, coll1);
 			}
 		}
 	}

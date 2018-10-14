@@ -60,8 +60,8 @@ bool j1Player::Start()
 			idle_animation = LoadAnimation("idle");
 			jump_animation = LoadAnimation("jump");
 			run_animation = LoadAnimation("run");
-			dead_animation = LoadAnimation("dead");
-			air_animation = LoadAnimation("air");
+			dead_animation = LoadAnimation("death");
+			afterjump_animation = LoadAnimation("air");
 
 			player_collider = App->collision->AddCollider({ coll_rect.x, coll_rect.y, coll_rect.w, coll_rect.h }, coll_type, App->player);
 		}
@@ -111,10 +111,45 @@ void j1Player::CheckKeyboardState()
 
 void j1Player::PlayerActions()
 {
+
 }
 
 void j1Player::OnCollision(Collider * c1, Collider * c2)
 {
+	uint		toLeftDirection = (position.x < c2->rect.x);
+	uint		toRightDirection = (c2->rect.x + c2->rect.w < position.x);
+	uint		toUpDirection = (position.y < c2->rect.y + c2->rect.h);
+	uint		toDownDirection = (c2->rect.y + 5 < position.y);
+
+	if (state != DEAD_STATE)
+	{
+		switch (c2->type)
+		{
+		case COLLIDER_PLATFORM:
+
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			{
+				state = AFTERJUMP_STATE;
+				c2->type == COLLIDER_NONE;
+			}
+
+			else
+			{
+				if (velocity.y > 0)
+				{
+					if (position.y < c2->rect.y)
+					{
+						jump_animation.Reset();
+						state = IDLE_STATE;
+					}
+				}
+				else
+				{
+					if (toRightDirection &&toDownDirection)position.x += maximVelocity.x;
+				}
+			}
+		}
+	}
 }
 
 void j1Player::Draw()
@@ -186,9 +221,9 @@ bool j1Player::Load(pugi::xml_node& nodePlayer)
 
 	if (name_state == "JUMP_STATE")state = JUMP_STATE;
 
-	if (name_state == "AIR_STATE")state = AIR_STATE;
+	if (name_state == "AFTERJUMP_STATE")state = AFTERJUMP_STATE;
 
-	if (name_state == "DEATH_STATE")state = DEATH_STATE;
+	if (name_state == "DEAD_STATE")state = DEAD_STATE;
 
 	if (name_state == "GOD_STATE")state = GOD_STATE;
 
@@ -215,11 +250,13 @@ bool j1Player::Save(pugi::xml_node& nodePlayer) const
 
 	if (state == 2) name_state = "JUMP_STATE";
 
-	if (state == 3) name_state = "AIR_STATE";
+	if (state == 3) name_state = "AFTERJUMP_STATE";
 
-	if (state == 4) name_state = "DEATH_STATE";
+	if (state == 4) name_state = "DEAD_STATE";
 
 	if (state == 5) name_state = "GOD_STATE";
 
 	nodeState.append_attribute("value") = name_state.GetString();
+
+	return true;
 }
