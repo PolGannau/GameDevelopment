@@ -36,8 +36,8 @@ bool j1Player::Start()
 
 	LOG("Starting Module Player...");
 
-	pugi::xml_parse_result			result = player_file.load_file(path.GetString());
-	pugi::xml_node					player_node = player_file.child("player");
+	pugi::xml_parse_result			result = playerFile.load_file(path.GetString());
+	pugi::xml_node					player_node = playerFile.child("player");
 
 	if (result == NULL)
 	{
@@ -119,6 +119,9 @@ void j1Player::OnCollision(Collider * c1, Collider * c2)
 
 void j1Player::Draw()
 {
+	SDL_Rect rect = current_animation->GetCurrentFrame();
+
+	App->render->Blit(playerSprites, position.x, position.y, &rect);
 }
 
 void j1Player::DebugInputs()
@@ -144,7 +147,24 @@ void j1Player::DebugInputs()
 
 Animation j1Player::LoadAnimation(p2SString name)
 {
-	return Animation();
+	SDL_Rect		frame;
+	Animation		playerAnimation;
+
+	LOG("Loading player animations...");
+
+	playerAnimation.speed = playerFile.child("player").child("animation").child(name.GetString()).attribute("speed").as_float();
+
+	for (pugi::xml_node nodeFrame = playerFile.child("player").child("animation").child(name.GetString()).child("frame"); nodeFrame; nodeFrame = nodeFrame.next_sibling("frame"))
+	{
+		frame.x = nodeFrame.attribute("x").as_int();
+		frame.y = nodeFrame.attribute("y").as_int();
+		frame.h = nodeFrame.attribute("h").as_int();
+		frame.w = nodeFrame.attribute("w").as_int();
+
+		playerAnimation.PushBack({ frame.x, frame.y, frame.w, frame.h });
+	}
+
+	return playerAnimation;
 }
 
 bool j1Player::Load(pugi::xml_node& nodePlayer)

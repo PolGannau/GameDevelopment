@@ -60,8 +60,8 @@ public:
 
 	fPoint position;
 	fPoint velocity;
-	fpoint maximVelocity;
-	fpoint aceleration;
+	fPoint maximVelocity;
+	fPoint aceleration;
 	float jumpMaxVelocity;
 	float jumpAceleration;
 
@@ -81,7 +81,7 @@ private:
 	Animation		air_animation;
 	Animation		dead_animation;
 
-	pugi::xml_document player_file;
+	pugi::xml_document playerFile;
 
 	SDL_Texture*		playerSprites = nullptr;
 	SDL_RendererFlip	flipX = SDL_FLIP_NONE;
