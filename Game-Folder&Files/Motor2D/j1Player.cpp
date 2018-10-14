@@ -146,8 +146,61 @@ void j1Player::OnCollision(Collider * c1, Collider * c2)
 				else
 				{
 					if (toRightDirection &&toDownDirection)position.x += maximVelocity.x;
+
+					else if (toLeftDirection&&toDownDirection)position.x -= maximVelocity.x;
+
+					else
+					{
+						position.y = (float)c2->rect.y;
+						jump_animation.Reset();
+
+						if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) || state == AFTERJUMP_STATE)state = IDLE_STATE;
+						
+					}
 				}
 			}
+			break;
+
+		case COLLIDER_GROUND:
+			if (toRightDirection && toDownDirection) {
+				position.x = (float)(c2->rect.x + c2->rect.w + c1->rect.w / 2);
+			}
+			//Check collision from left
+			else if (toLeftDirection && toDownDirection)
+			{
+				position.x = (float)(c2->rect.x - c1->rect.w / 2);
+			}
+			//Check collision from up
+			else if (toUpDirection)
+			{
+				position.y = (float)c2->rect.y;
+				if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE) && (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) || state == AFTERJUMP_STATE)
+				{
+					state = IDLE_STATE;
+				}
+			}
+			//Check collision from down
+			else
+			{
+				velocity.y = 0;
+				state = AFTERJUMP_STATE;
+				position.y = (float)(c2->rect.y + c2->rect.h + c1->rect.h);
+			}
+			break;
+
+		case COLLIDER_DEATH:
+			state = DEAD_STATE;
+			break;
+
+		case COLLIDER_FINISH:
+			if (App->scene->IsEnabled())App->fadeToBlack->FadeToBlack(App->scene, App->scene2, 0.5F);
+
+			else if (App->scene2->IsEnabled())App->fadeToBlack->FadeToBlack(App->scene2, App->scene, 0.5F);
+			break;
+
+		default:
+
+			break;
 		}
 	}
 }

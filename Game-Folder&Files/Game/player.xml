@@ -3,7 +3,7 @@
 <player>
   <image source="textures/caverman.png"/>
   <animation>
-    <idle>
+    <idle title="idle" speed="0.1">
       <frame x="0" y="0" width="64" height="64"/>
       <frame x="128" y="0" width="64" height="64"/>
       <frame x="256" y="0" width="64" height="64"/>
@@ -13,7 +13,7 @@
       <frame x="0" y="128" width="64" height="64"/>
     </idle>
 
-    <walking>
+    <walking title="run" speed="0.2">
       <frame x="128" y="128" width="64" height="64"/>
       <frame x="256" y="128" width="64" height="64"/>
       <frame x="384" y="128" width="64" height="64"/>
@@ -23,7 +23,7 @@
       <frame x="128" y="256" width="64" height="64"/>
     </walking>
 
-    <jump>
+    <jump title="jump" speed="0.2">
       <frame x="256" y="256" width="64" height="64"/>
       <frame x="384" y="256" width="64" height="64"/>
       <frame x="512" y="256" width="64" height="64"/>
@@ -32,7 +32,7 @@
       <frame x="128" y="384" width="64" height="64"/>
     </jump>
 
-    <afterjump>
+    <afterjump title="afterjump" speed="0.2">
       <frame x="256" y="384" width="64" height="64"/>
       <frame x="384" y="384" width="64" height="64"/>
       <frame x="512" y="384" width="64" height="64"/>
@@ -40,14 +40,14 @@
       <frame x="0" y="512" width="64" height="64"/>
     </afterjump>
 
-    <attack>
+    <attack title="attack" speed="0.2">
       <frame x="128" y="512" width="64" height="64"/>
       <frame x="256" y="512" width="64" height="64"/>
       <frame x="384" y="512" width="64" height="64"/>
       <frame x="512" y="512" width="64" height="64"/>
     </attack>
 
-    <death>
+    <death title="death" speed="0.2">
       <frame x="640" y="512" width="64" height="64"/>
       <frame x="0" y="640" width="64" height="64"/>
       <frame x="128" y="640" width="64" height="64"/>
@@ -57,7 +57,7 @@
       <frame x="640" y="640" width="64" height="64"/>
     </death>
 
-    <climb>
+    <climb title="climb" speed=""0.2">
       <frame x="0" y="768" width="64" height="64"/>
       <frame x="128" y="768" width="64" height="64"/>
       <frame x="256" y="768" width="64" height="64"/>

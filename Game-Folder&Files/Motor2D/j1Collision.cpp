@@ -186,59 +186,59 @@ COLLIDER_TYPE j1Collision::DefineColliderByNum(int type_asInt)
 	}
 }
 
-ColliderDistance Collider::ColliderDistanceNear(SDL_Rect& collRect, COLLIDER_TYPE& type_coll)const
-{
-	ColliderDistance dist;
-	dist.typeNearColl = type_coll;
-	dist.relativeDistance = 9999;
-
-	if (collRect.x >= rect.x + rect.w)
-	{
-		if (collRect.y + collRect.h > rect.y && collRect.y < rect.y + rect.h)
-		{
-			dist.posX = true;
-			dist.negX = false;
-			dist.negY = false;
-			dist.posY = false;
-			dist.relativeDistance = collRect.x - (rect.x + rect.w);
-		}
-	}
-	if (collRect.x + collRect.w <= rect.x)
-	{
-		if (collRect.y + collRect.h > rect.y &&collRect.y < rect.y + rect.h)
-		{
-			dist.negX = true;
-			dist.posX = false;
-			dist.negY = false;
-			dist.posY = false;
-			dist.relativeDistance = rect.x - (collRect.x + collRect.w);
-		}
-	}
-	if (collRect.y + collRect.h <= rect.y)
-	{
-		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
-		{
-			dist.negY = true;
-			dist.posY = false;
-			dist.posX = false;
-			dist.negX = false;
-			dist.relativeDistance = rect.y - (collRect.y + collRect.h);
-		}
-	}
-	if (collRect.y >= rect.y + rect.h)
-	{
-
-		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
-		{
-			dist.posY = true;
-			dist.negY = false;
-			dist.negX= false;
-			dist.posX = false;
-			dist.relativeDistance = collRect.y - (rect.y + rect.h);
-		}
-	}
-	return dist;
-}
+//ColliderDistance Collider::ColliderDistanceNear(SDL_Rect& collRect, COLLIDER_TYPE& type_coll)const
+//{
+//	ColliderDistance dist;
+//	dist.typeNearColl = type_coll;
+//	dist.relativeDistance = 9999;
+//
+//	if (collRect.x >= rect.x + rect.w)
+//	{
+//		if (collRect.y + collRect.h > rect.y && collRect.y < rect.y + rect.h)
+//		{
+//			dist.posX = true;
+//			dist.negX = false;
+//			dist.negY = false;
+//			dist.posY = false;
+//			dist.relativeDistance = collRect.x - (rect.x + rect.w);
+//		}
+//	}
+//	if (collRect.x + collRect.w <= rect.x)
+//	{
+//		if (collRect.y + collRect.h > rect.y &&collRect.y < rect.y + rect.h)
+//		{
+//			dist.negX = true;
+//			dist.posX = false;
+//			dist.negY = false;
+//			dist.posY = false;
+//			dist.relativeDistance = rect.x - (collRect.x + collRect.w);
+//		}
+//	}
+//	if (collRect.y + collRect.h <= rect.y)
+//	{
+//		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
+//		{
+//			dist.negY = true;
+//			dist.posY = false;
+//			dist.posX = false;
+//			dist.negX = false;
+//			dist.relativeDistance = rect.y - (collRect.y + collRect.h);
+//		}
+//	}
+//	if (collRect.y >= rect.y + rect.h)
+//	{
+//
+//		if (collRect.x + collRect.w > rect.x && collRect.x < rect.x + rect.w)
+//		{
+//			dist.posY = true;
+//			dist.negY = false;
+//			dist.negX= false;
+//			dist.posX = false;
+//			dist.relativeDistance = collRect.y - (rect.y + rect.h);
+//		}
+//	}
+//	return dist;
+//}
 
 void j1Collision::GodMode()
 {
