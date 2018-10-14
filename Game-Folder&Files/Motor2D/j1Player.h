@@ -65,7 +65,7 @@ public:
 	float jumpAceleration;
 
 	SDL_Rect		coll_rect;
-	Collider*		player_coll = nullptr;
+	Collider*		player_collider = nullptr;
 	COLLIDER_TYPE	coll_type = COLLIDER_NONE;
 	PlayerState		state = NO_STATE;
 	bool			godMode = false;
@@ -82,7 +82,7 @@ private:
 
 	pugi::xml_document player_file;
 
-	SDL_Texture*		playerSpriteSheet = nullptr;
+	SDL_Texture*		playerSprites = nullptr;
 	SDL_RendererFlip	flipX = SDL_FLIP_NONE;
 };
 #endif // !__J1PLAYER_H__

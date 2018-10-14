@@ -27,6 +27,8 @@ bool j1Player::Awake(pugi::xml_node& config)
 {
 	bool ret = true;
 
+	LOG("Awakening Player Module...");
+
 	path.create(config.child("path").child_value());
 
 	return ret;
@@ -36,6 +38,8 @@ bool j1Player::Start()
 {
 	bool ret = true;
 
+	LOG("Starting Player Module...");
+
 	pugi::xml_parse_result result = player_file.load_file(path.GetString());
 	pugi::xml_node	player_node = player_file.child("player");
 
@@ -44,9 +48,9 @@ bool j1Player::Start()
 
 	else
 	{
-		playerSpriteSheet = App->tex->Load(player_node.child("image").attribute("source").value());
+		playerSprites = App->tex->Load(player_node.child("image").attribute("source").value());
 
-		if (playerSpriteSheet == nullptr)
+		if (playerSprites == nullptr)
 			ret = false;
 
 		else
@@ -57,7 +61,7 @@ bool j1Player::Start()
 			dead_animation = LoadAnimation("dead");
 			air_animation = LoadAnimation("air");
 
-			player_coll = App->collision->AddCollider({ coll_rect.x, coll_rect.y, coll_rect.w, coll_rect.h }, coll_type, App->player);
+			player_collider = App->collision->AddCollider({ coll_rect.x, coll_rect.y, coll_rect.w, coll_rect.h }, coll_type, App->player);
 		}
 	}
 	return ret;
@@ -73,5 +77,54 @@ bool j1Player::PreUpdate()
 
 bool j1Player::Update(float dt)
 {
+	PlayerActions();
 
+	return true;
+}
+
+bool j1Player::PostUpdate()
+{
+	Draw();
+
+	return true;
+}
+
+bool j1Player::CleanUp()
+{
+	if (playerSprites != nullptr)
+	{
+		App->tex->UnLoad(playerSprites);
+		playerSprites = nullptr;
+	}
+	if (player_collider != nullptr)player_collider->to_delete = true;
+
+	return true;
+}
+
+bool j1Player::Load(pugi::xml_node& nodePlayer)
+{
+
+	LOG("Loading Player Info from XML...");
+
+	position.x = nodePlayer.child("position").attribute("x").as_float();		//Load X Position
+	position.y = nodePlayer.child("position").attribute("y").as_float();		//Load Y Position
+
+	velocity.x = nodePlayer.child("velocity").attribute("x").as_float();		//Load X Velocity
+	velocity.y = nodePlayer.child("velocity").attribute("y").as_float();		//Load Y Velocity
+
+	p2SString name_state = nodePlayer.child("state").attribute("value").as_string();
+
+	if (name_state == "IDLE_STATE")state = IDLE_STATE;		//In next lines, we load the state of the character
+															//when we last saved or when loading the map to start
+	if (name_state == "RUN_STATE")state = RUN_STATE;
+
+	if (name_state == "JUMP_STATE")state = JUMP_STATE;
+
+	if (name_state == "AIR_STATE")state = AIR_STATE;
+
+	if (name_state == "DEATH_STATE")state = DEATH_STATE;
+
+	if (name_state == "GOD_STATE")state = GOD_STATE;
+
+	return true;
 }
