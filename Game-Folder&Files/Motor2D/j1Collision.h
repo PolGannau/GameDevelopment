@@ -83,7 +83,7 @@ public:
 	j1Collision();
 
 	bool PreUpdate();
-	bool Update(float dt);
+	bool Update();
 	bool CleanUp();
 
 	~j1Collision();

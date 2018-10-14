@@ -7,6 +7,8 @@
 
 j1Collision::j1Collision()
 {
+	name.create("collision");
+
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)colliders[i] = nullptr;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_PLATFORM] = true;
@@ -119,7 +121,7 @@ bool j1Collision::PreUpdate()
 	return true;
 }
 
-bool j1Collision::Update(float dt)
+bool j1Collision::Update()
 {
 	DebugDraw();
 
