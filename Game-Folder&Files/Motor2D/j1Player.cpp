@@ -14,14 +14,9 @@
 #include "p2Point.h"
 
 
-j1Player::j1Player() :j1Module()
-{
-	name.create("player");
-}
+j1Player::j1Player() :j1Module() { name.create("player"); }
 
-j1Player::~j1Player()
-{
-}
+j1Player::~j1Player() {}
 
 bool j1Player::Awake(pugi::xml_node& config)
 {
@@ -38,20 +33,26 @@ bool j1Player::Start()
 {
 	bool ret = true;
 
-	LOG("Starting Player Module...");
+	LOG("Starting Module Player...");
 
-	pugi::xml_parse_result result = player_file.load_file(path.GetString());
-	pugi::xml_node	player_node = player_file.child("player");
+	pugi::xml_parse_result			result = player_file.load_file(path.GetString());
+	pugi::xml_node					player_node = player_file.child("player");
 
 	if (result == NULL)
+	{
+		LOG("Error loading player -> Error: %s", result.description());
 		ret = false;
+	}
 
 	else
 	{
 		playerSprites = App->tex->Load(player_node.child("image").attribute("source").value());
 
 		if (playerSprites == nullptr)
+		{
+			LOG("Error loading loadin textures");
 			ret = false;
+		}
 
 		else
 		{
@@ -70,7 +71,8 @@ bool j1Player::Start()
 bool j1Player::PreUpdate()
 {
 	DebugInput();
-	if (!godMode)CheckKeyboardState();
+	
+	CheckKeyboardState();
 
 	return true;
 }
@@ -106,9 +108,26 @@ void j1Player::CheckKeyboardState()
 
 }
 
+void j1Player::PlayerActions()
+{
+}
+
+void j1Player::OnCollision(Collider * c1, Collider * c2)
+{
+}
+
 void j1Player::Draw()
 {
 	
+}
+
+void j1Player::DebugInput()
+{
+}
+
+Animation j1Player::LoadAnimation(p2SString name)
+{
+	return Animation();
 }
 
 bool j1Player::Load(pugi::xml_node& nodePlayer)

@@ -3,6 +3,7 @@
 
 #include "j1Module.h"
 #include "p2List.h"
+#include "Animation.h"
 #include "j1Collision.h"
 #include "SDL/include/SDL_render.h"
 
@@ -53,13 +54,13 @@ private:
 
 	void Draw();
 	void DebugInput();
-	p2Animation LoadAnimation(p2SString name);
+	Animation LoadAnimation(p2SString name);
 
 public:
 
 	fPoint position;
 	fPoint velocity;
-	fpoint maxVelocity;
+	fpoint maximVelocity;
 	fpoint aceleration;
 	float jumpMaxVelocity;
 	float jumpAceleration;
@@ -73,12 +74,12 @@ public:
 private:
 
 	p2SString		path;
-	p2Animation*	current_animation = nullptr;
-	p2Animation		idle_animation;
-	p2Animation		run_animation;
-	p2Animation		jump_animation;
-	p2Animation		air_animation;
-	p2Animation		dead_animation;
+	Animation*	current_animation = nullptr;
+	Animation		idle_animation;
+	Animation		run_animation;
+	Animation		jump_animation;
+	Animation		air_animation;
+	Animation		dead_animation;
 
 	pugi::xml_document player_file;
 
