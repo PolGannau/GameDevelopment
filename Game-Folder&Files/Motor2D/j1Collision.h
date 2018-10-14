@@ -93,13 +93,14 @@ public:
 	void GodMode();
 	void DebugDraw();
 	void SetColliderSize(Collider* collider, uint width, uint height);
+	bool GetGodModeState();
 
-	ColliderDistance			distance;
+	/*ColliderDistance			distance;
 	ColliderDistance			NegativeX_Distance;
 	ColliderDistance			PositiveX_Distance;
 	ColliderDistance			NegativeY_Distance;
 	ColliderDistance			PositiveY_Distance;
-	COLLIDER_TYPE				type;
+	COLLIDER_TYPE				type;*/
 
 };
 

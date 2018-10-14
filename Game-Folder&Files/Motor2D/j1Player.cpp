@@ -108,14 +108,34 @@ void j1Player::CheckKeyboardState()
 {
 	bool right_KEYDOWN = App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT;
 	bool left_KEYDOWN = App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT;
-	bool down_KETDOWN = App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT;
 	bool right_KEYUP = App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_UP;
 	bool left_KEYUP = App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_UP;
-	bool down_KEYUP = App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP;
+	bool space_KEYDOWN = App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN;
 
 	switch (state)
 	{
-
+	case IDLE_STATE:
+		if (right_KEYDOWN || left_KEYDOWN)state = RUN_STATE;
+		if (space_KEYDOWN)state = JUMP_STATE;
+		break;
+	case RUN_STATE:
+		if (right_KEYUP || left_KEYUP)state = IDLE_STATE;
+		if (space_KEYDOWN)state = JUMP_STATE;
+		break;
+	case JUMP_STATE:
+		afterjump_animation.Reset();
+		if (jump_animation.Finished())state = AFTERJUMP_STATE;
+	case AFTERJUMP_STATE:
+		jump_animation.Reset();
+		break;
+	case DEAD_STATE:
+		velocity.x = velocity.y = 0;
+		break;
+	case GOD_STATE:
+		if (!App->collision->GetGodModeState())state = AFTERJUMP_STATE;
+		break;
+	default:
+		break;
 	}
 }
 
