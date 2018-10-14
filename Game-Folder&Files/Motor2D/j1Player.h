@@ -53,7 +53,7 @@ public:
 private:
 
 	void Draw();
-	void DebugInput();
+	void DebugInputs();
 	Animation LoadAnimation(p2SString name);
 
 public:

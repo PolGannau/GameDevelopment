@@ -70,7 +70,7 @@ bool j1Player::Start()
 
 bool j1Player::PreUpdate()
 {
-	DebugInput();
+	DebugInputs();
 	
 	CheckKeyboardState();
 
@@ -118,11 +118,14 @@ void j1Player::OnCollision(Collider * c1, Collider * c2)
 
 void j1Player::Draw()
 {
-	
 }
 
-void j1Player::DebugInput()
+void j1Player::DebugInputs()
 {
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	{
+		if (App->scene->IsEnabled())App->scene->
+	}
 }
 
 Animation j1Player::LoadAnimation(p2SString name)
