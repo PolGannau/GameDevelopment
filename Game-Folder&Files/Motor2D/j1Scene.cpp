@@ -3,6 +3,7 @@
 #include "j1App.h"
 #include "j1Input.h"
 #include "j1Textures.h"
+#include "j1FadeToBlack.h"
 #include "j1Audio.h"
 #include "j1Render.h"
 #include "j1Window.h"
@@ -99,4 +100,9 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void j1Scene::ReloadScene()
+{
+	App->fadeToBlack->FadeToBlack(App->scene, App->scene, 0.0F);
 }

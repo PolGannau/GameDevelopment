@@ -5,6 +5,7 @@
 #include "j1Textures.h"
 #include "j1Audio.h"
 #include "j1Render.h"
+#include "j1FadeToBlack.h"
 #include "j1Window.h"
 #include "j1Map.h"
 #include "j1Scene2.h"
@@ -30,7 +31,7 @@ bool j1Scene2::Awake()
 // Called before the first frame
 bool j1Scene2::Start()
 {
-	App->map->Load("stage_1.tmx");
+	App->map->Load("Stage2.tmx");
 	return true;
 }
 
@@ -99,4 +100,9 @@ bool j1Scene2::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void j1Scene2::ReloadScene()
+{
+	App->fadeToBlack->FadeToBlack(App->scene2, App->scene2, 0.0F);
 }

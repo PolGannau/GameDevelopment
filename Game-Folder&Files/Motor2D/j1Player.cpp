@@ -6,6 +6,7 @@
 #include "j1Input.h"
 #include "j1Map.h"
 #include "j1Audio.h"
+#include "j1Scene2.h"
 #include "j1FadeToBlack.h"
 #include "j1Collision.h"
 
@@ -124,7 +125,20 @@ void j1Player::DebugInputs()
 {
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 	{
-		if (App->scene->IsEnabled())App->scene->
+		if (App->scene->IsEnabled())App->scene->ReloadScene();
+		else if (App->scene2->IsEnabled())App->fadeToBlack->FadeToBlack(App->scene2, App->scene, 0.0F);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+	{
+		if (App->scene->IsEnabled())App->scene->ReloadScene();
+		else if (App->scene2->IsEnabled())App->scene2->ReloadScene();
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
+	{
+		App->collision->GodMode(); 
+		state = GOD_STATE;
 	}
 }
 

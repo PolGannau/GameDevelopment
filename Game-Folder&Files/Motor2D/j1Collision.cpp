@@ -125,8 +125,6 @@ bool j1Collision::Update()
 {
 	DebugDraw();
 
-	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) GodMode();
-
 	return true;
 }
 

@@ -32,6 +32,9 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	// Reload Scene
+	void ReloadScene();
+
 private:
 
 };
