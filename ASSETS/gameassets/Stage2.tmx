@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="15" tilewidth="32" tileheight="32" nextobjectid="5">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="15" tilewidth="32" tileheight="32" nextobjectid="149">
  <tileset firstgid="1" name="Terrain" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="goodly-2x.png" width="512" height="512"/>
   <tile id="70">
@@ -37698,9 +37698,143 @@
  <objectgroup name="CollidersFisics">
   <object id="1" name="Ground" type="COLLIDER_GROUND" x="-1" y="-1" width="95" height="257"/>
   <object id="2" name="Platform" type="COLLIDER_PLATFORM" x="94" y="161" width="97" height="29"/>
+  <object id="10" name="Ground" type="COLLIDER_GROUND" x="0" y="257.5" width="30" height="127"/>
+  <object id="11" name="Ground" type="COLLIDER_GROUND" x="0" y="383.5" width="668" height="95"/>
+  <object id="12" name="Ground" type="COLLIDER_GROUND" x="705" y="382.5" width="30" height="95"/>
+  <object id="13" name="Ground" type="COLLIDER_GROUND" x="929" y="381.5" width="30" height="95"/>
+  <object id="14" name="Ground" type="COLLIDER_GROUND" x="993" y="382.5" width="220" height="95"/>
+  <object id="15" name="Ground" type="COLLIDER_GROUND" x="1249" y="385.5" width="30" height="95"/>
+  <object id="16" name="Ground" type="COLLIDER_GROUND" x="1345" y="384.5" width="798" height="95"/>
+  <object id="17" name="Ground" type="COLLIDER_GROUND" x="2143" y="415.5" width="95" height="64"/>
+  <object id="18" name="Ground" type="COLLIDER_GROUND" x="2465" y="385.5" width="1534" height="95"/>
+  <object id="19" name="Ground" type="COLLIDER_GROUND" x="4096" y="384.5" width="30" height="95"/>
+  <object id="20" name="Ground" type="COLLIDER_GROUND" x="4257" y="385.5" width="30" height="95"/>
+  <object id="21" name="Ground" type="COLLIDER_GROUND" x="4385" y="385.5" width="543" height="95"/>
+  <object id="22" name="Ground" type="COLLIDER_GROUND" x="5024" y="256.5" width="30" height="222"/>
+  <object id="23" name="Ground" type="COLLIDER_GROUND" x="5216" y="417.5" width="62" height="63"/>
+  <object id="24" name="Ground" type="COLLIDER_GROUND" x="5280" y="384.5" width="1086" height="95"/>
+  <object id="25" name="Ground" type="COLLIDER_GROUND" x="6496" y="290.5" width="30" height="188"/>
+  <object id="26" name="Ground" type="COLLIDER_GROUND" x="6625" y="257.5" width="30" height="223"/>
+  <object id="27" name="Ground" type="COLLIDER_GROUND" x="6818" y="384.5" width="188" height="95"/>
+  <object id="28" name="Ground" type="COLLIDER_GROUND" x="7008" y="416.5" width="30" height="63"/>
+  <object id="29" name="Ground" type="COLLIDER_GROUND" x="7038" y="447.5" width="63" height="32"/>
+  <object id="30" name="Ground" type="COLLIDER_GROUND" x="7552" y="385.5" width="798" height="95"/>
+  <object id="31" name="Ground" type="COLLIDER_GROUND" x="8577" y="384.5" width="1885" height="95"/>
+  <object id="32" name="Ground" type="COLLIDER_GROUND" x="8835" y="-0.5" width="30" height="29"/>
+  <object id="33" name="Ground" type="COLLIDER_GROUND" x="8866" y="0.5" width="30" height="62"/>
+  <object id="34" name="Ground" type="COLLIDER_GROUND" x="8897" y="0.5" width="30" height="95"/>
+  <object id="35" name="Ground" type="COLLIDER_GROUND" x="8930" y="3.5" width="30" height="154"/>
+  <object id="36" name="Ground" type="COLLIDER_GROUND" x="8960" y="1.5" width="30" height="190"/>
+  <object id="37" name="Ground" type="COLLIDER_GROUND" x="9376" y="0.5" width="30" height="160"/>
+  <object id="38" name="Ground" type="COLLIDER_GROUND" x="9406" y="0.5" width="30" height="64"/>
+  <object id="39" name="Ground" type="COLLIDER_GROUND" x="8992" y="0.5" width="382" height="254"/>
+  <object id="40" name="Ground" type="COLLIDER_GROUND" x="11074" y="385.5" width="1788" height="95"/>
+  <object id="41" name="Ground" type="COLLIDER_GROUND" x="13504" y="386.5" width="1025" height="95"/>
+  <object id="42" name="Ground" type="COLLIDER_GROUND" x="13343" y="416.5" width="160" height="63"/>
+  <object id="43" name="Ground" type="COLLIDER_GROUND" x="15236" y="384.5" width="832" height="95"/>
+  <object id="44" name="Ground" type="COLLIDER_GROUND" x="15777" y="1.5" width="219" height="252"/>
+  <object id="45" name="Platform" type="COLLIDER_PLATFORM" x="256.5" y="320.5" width="156" height="34"/>
+  <object id="46" name="Platform" type="COLLIDER_PLATFORM" x="321.5" y="257.5" width="253" height="29"/>
+  <object id="47" name="Platform" type="COLLIDER_PLATFORM" x="736.5" y="321.5" width="159" height="29"/>
+  <object id="48" name="Platform" type="COLLIDER_PLATFORM" x="961.5" y="257.5" width="125" height="29"/>
+  <object id="49" name="Platform" type="COLLIDER_PLATFORM" x="1121.5" y="223.5" width="31" height="29"/>
+  <object id="50" name="Platform" type="COLLIDER_PLATFORM" x="1216.5" y="192.5" width="125" height="29"/>
+  <object id="51" name="Platform" type="COLLIDER_PLATFORM" x="1409.5" y="287.5" width="284" height="29"/>
+  <object id="52" name="Platform" type="COLLIDER_PLATFORM" x="1985.5" y="159.964" width="27" height="8.07216"/>
+  <object id="53" name="Platform" type="COLLIDER_PLATFORM" x="1792.5" y="286.5" width="31" height="29"/>
+  <object id="54" name="Platform" type="COLLIDER_PLATFORM" x="1888.5" y="225.5" width="31" height="29"/>
+  <object id="55" name="Platform" type="COLLIDER_PLATFORM" x="2081.5" y="129.5" width="189" height="29"/>
+  <object id="56" name="Platform" type="COLLIDER_PLATFORM" x="2367.5" y="161.5" width="31" height="29"/>
+  <object id="57" name="Platform" type="COLLIDER_PLATFORM" x="2335.5" y="417.5" width="31" height="29"/>
+  <object id="58" name="Platform" type="COLLIDER_PLATFORM" x="2687.5" y="319.5" width="221" height="29"/>
+  <object id="59" name="Platform" type="COLLIDER_PLATFORM" x="2816.5" y="225.5" width="316" height="29"/>
+  <object id="60" name="Platform" type="COLLIDER_PLATFORM" x="3073.5" y="289.5" width="156" height="29"/>
+  <object id="61" name="Platform" type="COLLIDER_PLATFORM" x="3071.5" y="129.5" width="158" height="29"/>
+  <object id="62" name="Platform" type="COLLIDER_PLATFORM" x="3295.5" y="226.5" width="255" height="29"/>
+  <object id="63" name="Platform" type="COLLIDER_PLATFORM" x="3841.5" y="97.5" width="222" height="29"/>
+  <object id="64" name="Platform" type="COLLIDER_PLATFORM" x="4511.5" y="321.5" width="222" height="29"/>
+  <object id="65" name="Platform" type="COLLIDER_PLATFORM" x="4800.5" y="290.5" width="31" height="29"/>
+  <object id="66" name="Platform" type="COLLIDER_PLATFORM" x="4895.5" y="225.5" width="31" height="29"/>
+  <object id="67" name="Platform" type="COLLIDER_PLATFORM" x="5407.5" y="288.5" width="224" height="29"/>
+  <object id="68" name="Platform" type="COLLIDER_PLATFORM" x="5728.5" y="224.5" width="253" height="29"/>
+  <object id="69" name="Platform" type="COLLIDER_PLATFORM" x="5888.5" y="129.5" width="158" height="29"/>
+  <object id="70" name="Platform" type="COLLIDER_PLATFORM" x="6112.5" y="322.5" width="31" height="29"/>
+  <object id="71" name="Platform" type="COLLIDER_PLATFORM" x="6175.5" y="258.5" width="288" height="29"/>
+  <object id="72" name="Platform" type="COLLIDER_PLATFORM" x="6432.5" y="96.5" width="31" height="29"/>
+  <object id="73" name="Platform" type="COLLIDER_PLATFORM" x="6753.5" y="257.5" width="92" height="29"/>
+  <object id="74" name="Platform" type="COLLIDER_PLATFORM" x="7135.5" y="414.5" width="31" height="29"/>
+  <object id="75" name="Platform" type="COLLIDER_PLATFORM" x="7423.5" y="415.5" width="31" height="29"/>
+  <object id="76" name="Platform" type="COLLIDER_PLATFORM" x="7680.5" y="320.5" width="125" height="29"/>
+  <object id="77" name="Platform" type="COLLIDER_PLATFORM" x="7745.5" y="289.5" width="188" height="29"/>
+  <object id="78" name="Ground" type="COLLIDER_GROUND" x="8290" y="288.5" width="29" height="95"/>
+  <object id="79" name="Ground" type="COLLIDER_GROUND" x="8576" y="161.5" width="31" height="222"/>
+  <object id="81" name="Platform" type="COLLIDER_PLATFORM" x="8000.5" y="226.5" width="32" height="29"/>
+  <object id="82" name="Platform" type="COLLIDER_PLATFORM" x="8095.5" y="161.5" width="158" height="29"/>
+  <object id="83" name="Platform" type="COLLIDER_PLATFORM" x="8320.5" y="95.5" width="94" height="29"/>
+  <object id="84" name="Platform" type="COLLIDER_PLATFORM" x="8352.5" y="225.5" width="159" height="29"/>
+  <object id="85" name="Platform" type="COLLIDER_PLATFORM" x="8639.5" y="259.5" width="192" height="29"/>
+  <object id="86" name="Platform" type="COLLIDER_PLATFORM" x="8738.5" y="321.5" width="155" height="29"/>
+  <object id="87" name="Platform" type="COLLIDER_PLATFORM" x="9535.5" y="289.5" width="832" height="29"/>
+  <object id="88" name="Platform" type="COLLIDER_PLATFORM" x="9791.5" y="193.5" width="415" height="29"/>
+  <object id="89" name="Platform" type="COLLIDER_PLATFORM" x="10367.5" y="161.5" width="255" height="29"/>
+  <object id="90" name="Platform" type="COLLIDER_PLATFORM" x="10720.5" y="127.5" width="30" height="29"/>
+  <object id="91" name="Platform" type="COLLIDER_PLATFORM" x="10848.5" y="191.5" width="31" height="29"/>
+  <object id="92" name="Platform" type="COLLIDER_PLATFORM" x="10943.5" y="129.5" width="190" height="29"/>
+  <object id="93" name="Platform" type="COLLIDER_PLATFORM" x="11230.5" y="321.5" width="382" height="29"/>
+  <object id="94" name="Platform" type="COLLIDER_PLATFORM" x="11488.5" y="223.5" width="414" height="29"/>
+  <object id="97" name="Platform" type="COLLIDER_PLATFORM" x="12032" y="192.5" width="31" height="29"/>
+  <object id="98" name="Platform" type="COLLIDER_PLATFORM" x="12128" y="128.5" width="30" height="29"/>
+  <object id="99" name="Platform" type="COLLIDER_PLATFORM" x="12225" y="95.5" width="158" height="29"/>
+  <object id="100" name="Platform" type="COLLIDER_PLATFORM" x="12449" y="161.5" width="190" height="29"/>
+  <object id="101" name="Platform" type="COLLIDER_PLATFORM" x="12737" y="224.5" width="189" height="29"/>
+  <object id="102" name="Platform" type="COLLIDER_PLATFORM" x="13024" y="192.5" width="32" height="29"/>
+  <object id="103" name="Platform" type="COLLIDER_PLATFORM" x="13249" y="130.5" width="95" height="29"/>
+  <object id="104" name="Platform" type="COLLIDER_PLATFORM" x="13503" y="192.5" width="32" height="29"/>
+  <object id="105" name="Platform" type="COLLIDER_PLATFORM" x="13536" y="321.5" width="284" height="29"/>
+  <object id="106" name="Platform" type="COLLIDER_PLATFORM" x="13697" y="257.5" width="286" height="29"/>
+  <object id="107" name="Platform" type="COLLIDER_PLATFORM" x="13858" y="192.5" width="378" height="29"/>
+  <object id="108" name="Platform" type="COLLIDER_PLATFORM" x="14304" y="255.5" width="32" height="29"/>
+  <object id="109" name="Platform" type="COLLIDER_PLATFORM" x="14398" y="320.5" width="32" height="29"/>
+  <object id="110" name="Platform" type="COLLIDER_PLATFORM" x="14369" y="65.5" width="189" height="29"/>
+  <object id="111" name="Platform" type="COLLIDER_PLATFORM" x="14592" y="129.5" width="95" height="29"/>
+  <object id="112" name="Platform" type="COLLIDER_PLATFORM" x="14786" y="96.5" width="91" height="29"/>
+  <object id="113" name="Platform" type="COLLIDER_PLATFORM" x="14944" y="161.5" width="32" height="29"/>
+  <object id="114" name="Platform" type="COLLIDER_PLATFORM" x="15071" y="97.5" width="32" height="29"/>
+  <object id="115" name="Platform" type="COLLIDER_PLATFORM" x="14528" y="255.5" width="606" height="29"/>
+  <object id="116" name="Platform" type="COLLIDER_PLATFORM" x="15231" y="289.5" width="32" height="29"/>
+  <object id="119" name="Platform" type="COLLIDER_PLATFORM" x="15329" y="256.5" width="92" height="29"/>
+  <object id="120" name="Platform" type="COLLIDER_PLATFORM" x="225" y="223.5" width="30" height="10"/>
+  <object id="121" name="Platform" type="COLLIDER_PLATFORM" x="3617" y="190" width="30" height="10"/>
+  <object id="122" name="Platform" type="COLLIDER_PLATFORM" x="3744" y="161" width="30" height="10"/>
+  <object id="123" name="Platform" type="COLLIDER_PLATFORM" x="6114" y="96" width="30" height="10"/>
+  <object id="124" name="Platform" type="COLLIDER_PLATFORM" x="6207" y="96" width="30" height="10"/>
+  <object id="125" name="Platform" type="COLLIDER_PLATFORM" x="6304" y="95" width="30" height="10"/>
+  <object id="126" name="Platform" type="COLLIDER_PLATFORM" x="7231" y="446" width="30" height="10"/>
+  <object id="127" name="Platform" type="COLLIDER_PLATFORM" x="7298" y="417" width="30" height="10"/>
+  <object id="128" name="Platform" type="COLLIDER_PLATFORM" x="11969" y="256" width="30" height="10"/>
+  <object id="129" name="Platform" type="COLLIDER_PLATFORM" x="13152" y="160" width="30" height="10"/>
+  <object id="130" name="Platform" type="COLLIDER_PLATFORM" x="14304" y="127" width="30" height="10"/>
+  <object id="147" name="Platform" type="COLLIDER_PLATFORM" x="12287" y="288.5" width="416" height="29"/>
+  <object id="148" name="Platform" type="COLLIDER_PLATFORM" x="10305.5" y="225.5" width="30" height="9"/>
  </objectgroup>
  <objectgroup name="CollidersLogics">
   <object id="3" name="Death" type="COLLIDER_DEATH" x="670" y="448" width="322" height="31"/>
   <object id="4" name="Finish" type="COLLIDER_FINISH" x="15872" y="255" width="95" height="129"/>
+  <object id="131" name="Death" type="COLLIDER_DEATH" x="1210" y="447.5" width="39" height="31"/>
+  <object id="132" name="Death" type="COLLIDER_DEATH" x="1280" y="449.5" width="66" height="31"/>
+  <object id="133" name="Death" type="COLLIDER_DEATH" x="2238" y="448.5" width="227" height="31"/>
+  <object id="134" name="Death" type="COLLIDER_DEATH" x="3999" y="447.5" width="96" height="31"/>
+  <object id="135" name="Death" type="COLLIDER_DEATH" x="4126" y="450.5" width="132" height="31"/>
+  <object id="136" name="Death" type="COLLIDER_DEATH" x="4287" y="451.5" width="99" height="31"/>
+  <object id="137" name="Death" type="COLLIDER_DEATH" x="4926" y="449.5" width="98" height="31"/>
+  <object id="138" name="Death" type="COLLIDER_DEATH" x="5055" y="447.5" width="164" height="31"/>
+  <object id="139" name="Death" type="COLLIDER_DEATH" x="6365" y="447.5" width="130" height="31"/>
+  <object id="140" name="Death" type="COLLIDER_DEATH" x="6526" y="447.5" width="101" height="31"/>
+  <object id="141" name="Death" type="COLLIDER_DEATH" x="6654" y="447.5" width="161" height="31"/>
+  <object id="142" name="Death" type="COLLIDER_DEATH" x="7103" y="465.5" width="448" height="12"/>
+  <object id="143" name="Death" type="COLLIDER_DEATH" x="8349" y="450.5" width="229" height="31"/>
+  <object id="144" name="Death" type="COLLIDER_DEATH" x="10464" y="448.5" width="612" height="31"/>
+  <object id="145" name="Death" type="COLLIDER_DEATH" x="12860" y="450.5" width="486" height="31"/>
+  <object id="146" name="Death" type="COLLIDER_DEATH" x="14528" y="450.5" width="705" height="31"/>
  </objectgroup>
 </map>
