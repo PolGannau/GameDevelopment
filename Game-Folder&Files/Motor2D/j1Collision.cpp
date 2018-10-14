@@ -147,6 +147,12 @@ void j1Collision::DebugDraw()
 	}
 }
 
+void j1Collision::SetColliderSize(Collider * collider, uint width, uint height)
+{
+	collider->rect.w = width;
+	collider->rect.h = height;
+}
+
 bool Collider::CheckCollision(const SDL_Rect& r)const
 {
 	if ((r.x + r.w <= rect.x) || (r.x >= rect.x + rect.w) || (r.y + r.h <= rect.y) || (r.y >= rect.y + rect.h)) return false;

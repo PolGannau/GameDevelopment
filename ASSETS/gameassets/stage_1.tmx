@@ -128,22 +128,6 @@
  <tileset firstgid="257" name="ocean" tilewidth="32" tileheight="32" tilecount="90" columns="15">
   <image source="Ocean.png" width="480" height="216"/>
  </tileset>
- <tileset firstgid="347" name="goldcoin" tilewidth="32" tileheight="32" tilecount="9" columns="9">
-  <image source="goldcoin.png" width="288" height="32"/>
-  <tile id="0">
-   <animation>
-    <frame tileid="0" duration="100"/>
-    <frame tileid="1" duration="100"/>
-    <frame tileid="4" duration="100"/>
-    <frame tileid="2" duration="100"/>
-    <frame tileid="5" duration="100"/>
-    <frame tileid="6" duration="100"/>
-    <frame tileid="7" duration="100"/>
-    <frame tileid="8" duration="100"/>
-    <frame tileid="3" duration="100"/>
-   </animation>
-  </tile>
- </tileset>
  <layer name="Background" width="500" height="15">
   <properties>
    <property name="parallax_speed" type="float" value="0.5"/>

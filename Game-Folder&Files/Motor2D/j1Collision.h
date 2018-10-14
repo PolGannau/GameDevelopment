@@ -92,6 +92,7 @@ public:
 	Collider* AddCollider(SDL_Rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
 	void GodMode();
 	void DebugDraw();
+	void SetColliderSize(Collider* collider, uint width, uint height);
 
 	ColliderDistance			distance;
 	ColliderDistance			NegativeX_Distance;

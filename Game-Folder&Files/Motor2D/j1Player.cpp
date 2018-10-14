@@ -106,12 +106,66 @@ bool j1Player::CleanUp()
 
 void j1Player::CheckKeyboardState()
 {
+	bool right_KEYDOWN = App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT;
+	bool left_KEYDOWN = App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT;
+	bool down_KETDOWN = App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT;
+	bool right_KEYUP = App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_UP;
+	bool left_KEYUP = App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_UP;
+	bool down_KEYUP = App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP;
 
+	switch (state)
+	{
+
+	}
 }
 
 void j1Player::PlayerActions()
 {
+	switch (state)
+	{
+	case IDLE_STATE:
+		velocity.x = (1 - acceleration.x) * velocity.x;
+		velocity.y = (1 - acceleration.y) * velocity.y;
+		current_animation = &idle_animation;
+		App->collision->SetColliderSize(player_collider, 45, 49);
+			break;
 
+	case RUN_STATE:
+		velocity.y = (1 - acceleration.y)*velocity.y;
+		current_animation = &run_animation;
+		break;
+
+	case JUMP_STATE:
+		velocity.y = jumpAcceleration * jumpMaxVelocity + (1 - acceleration.y)*velocity.y;
+		current_animation = &jump_animation;
+		break;
+
+	case AFTERJUMP_STATE:
+		velocity.y = acceleration.y*-maximVelocity.y + (1 - acceleration.y)*velocity.y;
+		current_animation = &afterjump_animation;
+		break;
+
+	case DEAD_STATE:
+		current_animation = &dead_animation;
+		if (App->scene->IsEnabled())
+		{
+			App->scene->ReloadScene();
+		}
+		else if (App->scene2->IsEnabled())
+		{
+			App->scene2->ReloadScene();
+		}
+		break;
+
+	case GOD_STATE:
+		current_animation = &idle_animation;
+		velocity.y = acceleration.y*-maximVelocity.y + (1 - acceleration.y)*velocity.y;
+		break;
+
+	default:
+
+		break;
+	}
 }
 
 void j1Player::OnCollision(Collider * c1, Collider * c2)
@@ -266,6 +320,9 @@ bool j1Player::Load(pugi::xml_node& nodePlayer)
 	velocity.x = nodePlayer.child("velocity").attribute("x").as_float();		//Load X Velocity
 	velocity.y = nodePlayer.child("velocity").attribute("y").as_float();		//Load Y Velocity
 
+	coll_rect.x = nodePlayer.child("collider").attribute("x").as_int();			//Load Player Collider X
+	coll_rect.y = nodePlayer.child("collider").attribute("y").as_int();			//Load Player Collider Y
+
 	p2SString name_state = nodePlayer.child("state").attribute("value").as_string();
 
 	if (name_state == "IDLE_STATE")state = IDLE_STATE;		//In next lines, we load the state of the character
@@ -288,12 +345,16 @@ bool j1Player::Save(pugi::xml_node& nodePlayer) const
 	pugi::xml_node nodeState = nodePlayer.append_child("state");
 	pugi::xml_node positionPlayer = nodePlayer.append_child("position");
 	pugi::xml_node velocityPlayer = nodePlayer.append_child("velocity");
+	pugi::xml_node coll = nodePlayer.append_child("collider");
 
 	positionPlayer.append_attribute("x") = position.x;		//Save Position X
 	positionPlayer.append_attribute("y") = position.y;		//Save Position Y
 
 	velocityPlayer.append_attribute("x") = velocity.x;		//Save Velocity X
 	velocityPlayer.append_attribute("y") = velocity.y;		//Save Velocity Y
+
+	coll.append_attribute("x") = coll_rect.x;
+	coll.append_attribute("y") = coll_rect.y;
 
 	p2SString name_state;
 
