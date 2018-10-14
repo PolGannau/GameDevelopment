@@ -128,74 +128,7 @@
  <tileset firstgid="257" name="ocean" tilewidth="32" tileheight="32" tilecount="90" columns="15">
   <image source="Ocean.png" width="480" height="216"/>
  </tileset>
- <tileset firstgid="347" name="daxbotsheet" tilewidth="64" tileheight="64" tilecount="16" columns="4">
-  <image source="daxbotsheet.png" width="256" height="272"/>
-  <tile id="0">
-   <properties>
-    <property name="Collision" type="bool" value="true"/>
-   </properties>
-   <objectgroup color="#00ff00" draworder="index">
-    <object id="1" x="11" y="-1" width="42" height="61"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="0" duration="125"/>
-    <frame tileid="1" duration="125"/>
-    <frame tileid="2" duration="125"/>
-    <frame tileid="3" duration="125"/>
-   </animation>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="Collision" type="bool" value="true"/>
-   </properties>
-   <objectgroup color="#00ff00" draworder="index">
-    <object id="1" x="12" y="7" width="44" height="54"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="5" duration="125"/>
-    <frame tileid="6" duration="125"/>
-    <frame tileid="7" duration="125"/>
-   </animation>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="Collision" type="bool" value="true"/>
-   </properties>
-   <objectgroup color="#00ff00" draworder="index">
-    <object id="3" x="6" y="0" width="51" height="62"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="9" duration="125"/>
-    <frame tileid="10" duration="125"/>
-    <frame tileid="11" duration="125"/>
-   </animation>
-  </tile>
-  <tile id="12">
-   <properties>
-    <property name="Collision" type="bool" value="true"/>
-   </properties>
-   <objectgroup color="#00ff00" draworder="index">
-    <object id="1" x="9" y="-1" width="44" height="62"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="12" duration="125"/>
-    <frame tileid="13" duration="125"/>
-   </animation>
-  </tile>
-  <tile id="14">
-   <properties>
-    <property name="Collision" type="bool" value="true"/>
-   </properties>
-   <objectgroup color="#00ff00" draworder="index">
-    <object id="1" x="8" y="0" width="44" height="61"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="14" duration="125"/>
-    <frame tileid="15" duration="125"/>
-   </animation>
-  </tile>
- </tileset>
- <tileset firstgid="363" name="goldcoin" tilewidth="32" tileheight="32" tilecount="9" columns="9">
+ <tileset firstgid="347" name="goldcoin" tilewidth="32" tileheight="32" tilecount="9" columns="9">
   <image source="goldcoin.png" width="288" height="32"/>
   <tile id="0">
    <animation>
@@ -208,6 +141,73 @@
     <frame tileid="7" duration="100"/>
     <frame tileid="8" duration="100"/>
     <frame tileid="3" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <tileset firstgid="356" name="caverman" tilewidth="64" tileheight="64" tilecount="143" columns="11">
+  <image source="Playable/caverman.png" width="704" height="832"/>
+  <tile id="0">
+   <animation>
+    <frame tileid="0" duration="125"/>
+    <frame tileid="2" duration="125"/>
+    <frame tileid="4" duration="125"/>
+    <frame tileid="6" duration="125"/>
+    <frame tileid="8" duration="125"/>
+    <frame tileid="10" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="22">
+   <animation>
+    <frame tileid="22" duration="125"/>
+    <frame tileid="24" duration="125"/>
+    <frame tileid="26" duration="125"/>
+    <frame tileid="28" duration="125"/>
+    <frame tileid="30" duration="125"/>
+    <frame tileid="32" duration="125"/>
+    <frame tileid="44" duration="125"/>
+    <frame tileid="46" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="48">
+   <animation>
+    <frame tileid="48" duration="125"/>
+    <frame tileid="50" duration="125"/>
+    <frame tileid="52" duration="125"/>
+    <frame tileid="54" duration="125"/>
+    <frame tileid="66" duration="125"/>
+    <frame tileid="68" duration="125"/>
+    <frame tileid="70" duration="125"/>
+    <frame tileid="72" duration="125"/>
+    <frame tileid="74" duration="125"/>
+    <frame tileid="76" duration="125"/>
+    <frame tileid="88" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="90">
+   <animation>
+    <frame tileid="90" duration="125"/>
+    <frame tileid="92" duration="125"/>
+    <frame tileid="94" duration="125"/>
+    <frame tileid="96" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="98">
+   <animation>
+    <frame tileid="98" duration="125"/>
+    <frame tileid="110" duration="125"/>
+    <frame tileid="112" duration="125"/>
+    <frame tileid="114" duration="125"/>
+    <frame tileid="116" duration="125"/>
+    <frame tileid="118" duration="125"/>
+    <frame tileid="120" duration="125"/>
+   </animation>
+  </tile>
+  <tile id="132">
+   <animation>
+    <frame tileid="132" duration="125"/>
+    <frame tileid="134" duration="125"/>
+    <frame tileid="136" duration="125"/>
+    <frame tileid="138" duration="125"/>
    </animation>
   </tile>
  </tileset>
