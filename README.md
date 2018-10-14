@@ -6,6 +6,8 @@ In this Repository we will commit all the new features we make to our game in XM
 
 We hope you like it.
 
+**Link to github repository [link](https://github.com/PolGannau/GameDevelopment)**
+
 ### Marc Rosell
 Github name: *MarcRosellH*
 
