@@ -16,3 +16,12 @@
  · Variable chasing.
  · Metode desplaçament (voladors esencialment).
 - Enemics.
+ · Carregar i guardar l'estat.
+- Capar a 30 fps.
+- Titol finestra tot allo raro xD (fps, temps de proces, etc).
+- Temps entre frames normalitzat.
+- Profiler.
+- Debug Keys.
+ · F9 veure colliders i pathfinding.
+ · F10 Godmode that you can also fly.
+ · F11 habilitar i deshabilitar els 30 fps.
