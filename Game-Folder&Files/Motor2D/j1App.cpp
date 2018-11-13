@@ -27,8 +27,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	render = new j1Render();
 	tex = new j1Textures();
 	audio = new j1Audio();
-	scene = new j1Scene();
 	scene2 = new j1Scene2();
+	scene = new j1Scene();
 	map = new j1Map();
 	player = new j1Player();
 	collision = new j1Collision();
@@ -41,8 +41,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(map);
-	AddModule(scene);
 	AddModule(scene2);
+	AddModule(scene);
 	AddModule(player);
 	AddModule(collision);
 	AddModule(fadeToBlack);
