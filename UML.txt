@@ -35,3 +35,19 @@ p2DynArray<iPoint>entityPath
 -----------------------
 Entity(const char*name)
 bool Entity__Update(float dt)
+void Entity_OnCollision(Collider* c1, Collider* c2)
+Animation* LoadAnimation(const char* animationPath, const char* animationName)
+void LoadLogic(const char*animationPath)
+void setAnimation()
+bool calculate Path()
+virtual void standardPath()
+virtual void followPath()
+_______________________________
+Player
+---------------
+bool won
+---------------
+bool Start()
+bool Update(float dt)
+bool PostUpdate()
+bool CleanUp()
