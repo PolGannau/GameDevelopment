@@ -2,6 +2,9 @@
 #define __j1ENTITY_H__
 
 #include "j1Module.h"
+#include "p2Point.h"
+#include "j1Animation.h"
+#include "j1Textures.h"
 
 enum class Entity_TYPE 
 {
@@ -28,6 +31,8 @@ public:
 
 	~j1Entity() {};
 
+	bool Start();
+
 	virtual bool Update(float dt)
 	{
 		return true;
@@ -35,13 +40,20 @@ public:
 
 	virtual bool Cleanup()
 	{
+		delete texture_entity;
+		delete currentAnimation_entity;
+
 		return true;
 	}
 
 	virtual void Draw() {};
 
-private:
+public:
 
+	fPoint			position_entity;
+	Entity_TYPE		type_entity;
+	SDL_Texture*	texture_entity;
+	j1Animation*	currentAnimation_entity;
 
 };
 

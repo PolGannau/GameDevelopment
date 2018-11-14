@@ -5,13 +5,9 @@ bool j1EntityManager::Awake(pugi::xml_node& node)
 
 }
 
-bool j1EntityManager::Start()
-{
-
-}
-
 bool j1EntityManager::Update(float dt)
 {
+
 	return true;
 }
 
