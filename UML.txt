@@ -1,0 +1,37 @@
+GAME
+___________________________
+Entity Manager
+-------------
+p2List<Entity*> entities
+bool player_god_mode
+-------------
+bool Awake(pugi::xml_node&)
+bool Start()
+bool Update(float dt)
+bool PostUpdate()
+bool CleanUp()
+Entity* createEntity(entity_type type, int x, int y)
+Entity* getPlayer()
+____________________________________________________
+*___________________________________________________
+Entity
+----------
+enum entity_state
+enum entity_type
+entity_state state
+entity_type type
+iPoint position
+fPoint virtualPosition
+int pos_relCam
+fPoint velocity
+bool colliding_(bottom, left, right, up)
+SDL_Texture* graaphics
+Animation* animation
+Collider* collider
+float speed
+float jump_force
+bool flying
+p2DynArray<iPoint>entityPath
+-----------------------
+Entity(const char*name)
+bool Entity__Update(float dt)
