@@ -27,10 +27,6 @@ and other logic code.
 
 #Minimum Debug Keys
 
-- F1 Start from the very first level
-- F2 Start from the beginnig of the current level
-- F5 Save the current state
-- F6 Load the previous state (even across levels)
 - F9 To view colliders and pathfinding
-- F10 God Mode (allows to fly around)
+- F10 God Mode (allows to fly around) Improve flying
 - F11 Enable/Disable FPS cap to 30
