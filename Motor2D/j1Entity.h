@@ -24,6 +24,13 @@ class j1Entity : public j1Module
 {
 public:
 
+	j1Entity(const char* name);
+
+	~j1Entity();
+
+	bool Update(float dt);
+
+	bool Cleanup();
 
 private:
 

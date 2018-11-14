@@ -19,7 +19,13 @@ public:
 
 	bool CleanUp();
 
-	j1Entity* CreateEntity()
+	j1Entity* CreateEntity(Entity_TYPE type, int x, int y);
+
+	void DestroyEntity(j1Entity entity);
+
+private:
+
+	p2List<j1Entity*> entities;
 };
 
 #endif // !__J1ENTITYMANAGER_H__
