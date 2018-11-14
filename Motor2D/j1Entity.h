@@ -3,6 +3,23 @@
 
 #include "j1Module.h"
 
+enum class Entity_TYPE 
+{
+	PLAYER,
+	FLYING_ENEMY,
+	GROUND_ENEMY,
+	unknown
+};
+
+enum class Entity_STATE
+{
+	IDLE,
+	WALKING,
+	CHASING,
+	ATTACKING,
+	unknown
+};
+
 class j1Entity : public j1Module
 {
 public:

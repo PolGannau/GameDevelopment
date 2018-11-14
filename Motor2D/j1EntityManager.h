@@ -3,6 +3,7 @@
 
 #include "j1Module.h"
 #include "p2List.h"
+#include "j1Entity.h"
 
 class j1EntityManager : public j1Module
 {
@@ -18,7 +19,7 @@ public:
 
 	bool CleanUp();
 
-	Entity* CreateEntity()
+	j1Entity* CreateEntity()
 };
 
 #endif // !__J1ENTITYMANAGER_H__
