@@ -15,8 +15,6 @@ public:
 
 	bool Update(float dt);
 
-	bool PostUpdate();
-
 	bool CleanUp();
 
 	j1Entity* CreateEntity(Entity_TYPE type, int x, int y);
