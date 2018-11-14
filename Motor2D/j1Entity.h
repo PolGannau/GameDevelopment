@@ -26,11 +26,19 @@ public:
 
 	j1Entity(const char* name);
 
-	~j1Entity();
+	~j1Entity() {};
 
-	bool Update(float dt);
+	virtual bool Update(float dt)
+	{
+		return true;
+	}
 
-	bool Cleanup();
+	virtual bool Cleanup()
+	{
+		return true;
+	}
+
+	virtual void Draw() {};
 
 private:
 
