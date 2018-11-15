@@ -13,10 +13,6 @@ player by normal walking and falling down to other platforms
 #Now saving/loading must save each enemy state. Enemies normally have a range of
 perception and not react to the other player untile they are close by (up to team)
 
-#By default, game should be capped to be stable 30 frames per second without vsync
-The title of the window must show:
-	-FPS / average FPS / MS of the last frame (Cap on/off + Vsync on/off)
-
 #Game should have all it's movement normallized using dt, so in slow/fast machines
 it would keep the same movement speed
 
