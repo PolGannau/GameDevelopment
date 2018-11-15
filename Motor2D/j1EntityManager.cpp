@@ -2,7 +2,7 @@
 
 bool j1EntityManager::Awake(pugi::xml_node& node)
 {
-
+	return true;
 }
 
 bool j1EntityManager::Update(float dt)
