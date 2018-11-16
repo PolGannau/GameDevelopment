@@ -16,10 +16,10 @@ class j1Render;
 class j1Textures;
 class j1Audio;
 class j1Scene;
-class j1PathFinding;
 class j1Map;
 class j1SceneManager;
 class j1CollisionManager;
+class j1PathFinding;
 class j1EntityManager;
 
 

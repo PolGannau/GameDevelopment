@@ -9,7 +9,6 @@
 #include "j1Textures.h"
 #include "j1Audio.h"
 #include "j1Scene.h"
-#include "j1Scene2.h"
 #include "j1Map.h"
 #include "j1SceneManager.h"
 #include "j1CollisionManager.h"
@@ -33,9 +32,9 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	audio = new j1Audio();
 	scene = new j1Scene();
 	map = new j1Map();
-	pathfinding = new j1PathFinding();
 	scenemanager = new j1SceneManager();
 	collision = new j1CollisionManager();
+	pathfinding = new j1PathFinding();
 	entitymanager = new j1EntityManager();
 
 	// Ordered for awake / Start / Update
