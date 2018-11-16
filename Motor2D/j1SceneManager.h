@@ -1,4 +1,3 @@
-
 #ifndef __j1SCENEMANAGER_H__
 #define __j1SCENEMANAGER_H__
 
@@ -13,10 +12,10 @@ public:
 
 	bool Start();
 	bool Update(float dt);
-	bool LoadScene(j1Module* module_off, j1Module* module_on, float time = 2.0f);
-	bool LoadSceneWithoutFade(j1Module* module_off, j1Module* module_on);
-	void ReloadScene(j1Module* module);
-	void LoadFirstScene(j1Module* module_off);
+	bool LoadScene(Uint32 map_to_load, float time = 2.0f);
+	bool LoadSceneWithoutFade(Uint32 map_to_load);
+	void ReloadScene();
+	void LoadFirstScene();
 
 	//current active scene
 	j1Module* current_scene = nullptr;
@@ -33,8 +32,7 @@ private:
 	Uint32 start_time = 0;
 	Uint32 total_time = 0;
 	SDL_Rect screen;
-	j1Module* module_enable = nullptr;
-	j1Module* module_disable = nullptr;
+	Uint32 map_to_load = 0;
 
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&) const;

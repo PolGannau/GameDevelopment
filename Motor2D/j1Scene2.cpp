@@ -51,7 +51,7 @@ bool j1Scene2::Start()
 bool j1Scene2::PreUpdate()
 {
 	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
-		App->scenemanager->LoadScene(this, App->scene);
+		App->scenemanager->LoadScene(1);
 
 	return true;
 }
@@ -62,7 +62,7 @@ bool j1Scene2::Update(float dt)
 	App->render->UpdateCamera();
 
 	if (App->entitymanager->player->position_entity.x > App->map->data.win_position.x)
-		App->scenemanager->LoadScene(this, App->scene);
+		App->scenemanager->LoadScene(1);
 
 	App->map->Draw();
 

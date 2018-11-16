@@ -32,7 +32,6 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new j1Textures();
 	audio = new j1Audio();
 	scene = new j1Scene();
-	scene2 = new j1Scene2();
 	map = new j1Map();
 	pathfinding = new j1PathFinding();
 	scenemanager = new j1SceneManager();
@@ -46,11 +45,10 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(collision);
-	AddModule(map);
+	AddModule(map); 
 	AddModule(scene);
-	AddModule(scene2, false);
-	AddModule(pathfinding);
 	AddModule(scenemanager);
+	AddModule(pathfinding);
 	AddModule(entitymanager);
 
 	// render last to swap buffer

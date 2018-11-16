@@ -16,7 +16,6 @@ class j1Render;
 class j1Textures;
 class j1Audio;
 class j1Scene;
-class j1Scene2;
 class j1PathFinding;
 class j1Map;
 class j1SceneManager;
@@ -93,7 +92,6 @@ public:
 	j1Audio*			audio = nullptr;
 	j1SceneManager*		scenemanager = nullptr;
 	j1Scene*			scene = nullptr;
-	j1Scene2*			scene2 = nullptr;
 	j1Map*				map = nullptr;
 	j1CollisionManager* collision = nullptr;
 	j1PathFinding*		pathfinding = nullptr;

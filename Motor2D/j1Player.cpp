@@ -316,7 +316,7 @@ void j1Player::Die()
 			death = true;
 			current_movement = IDLE;
 		}
-		App->scenemanager->ReloadScene(App->scenemanager->current_scene);
+		App->scenemanager->ReloadScene();
 	}
 }
 
