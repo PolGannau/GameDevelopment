@@ -14,6 +14,7 @@
 #include "j1SceneManager.h"
 #include "j1Player.h"
 #include "j1CollisionManager.h"
+#include "j1Pathfinding.h"
 #include "j1App.h"
 #include "Brofiler/Brofiler.h"
 
@@ -33,6 +34,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new j1Scene();
 	scene2 = new j1Scene2();
 	map = new j1Map();
+	pathfinding = new j1PathFinding();
 	scenemanager = new j1SceneManager();
 	collision = new j1CollisionManager();
 	player = new j1Player();
@@ -48,6 +50,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(scene);
 	AddModule(scene2, false);
+	AddModule(pathfinding);
 	AddModule(player);
 	AddModule(scenemanager);
 
