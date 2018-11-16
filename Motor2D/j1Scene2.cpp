@@ -36,7 +36,7 @@ bool j1Scene2::Start()
 	bool ret = true;
 
 	App->map->Load("MapScene2.tmx");
-	App->player->position = { App->map->data.player_position.x, App->map->data.player_position.y };
+	App->player->position_entity = { App->map->data.player_position.x, App->map->data.player_position.y };
 	App->player->death = false;
 
 	App->render->camera.x = App->map->data.camera_position.x;
@@ -61,7 +61,7 @@ bool j1Scene2::Update(float dt)
 {
 	App->render->UpdateCamera();
 
-	if (App->player->position.x > App->map->data.win_position.x)
+	if (App->player->position_entity.x > App->map->data.win_position.x)
 		App->scenemanager->LoadScene(this, App->scene);
 
 	App->map->Draw();

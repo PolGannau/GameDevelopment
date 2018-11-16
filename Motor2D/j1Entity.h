@@ -20,7 +20,7 @@ class j1Entity : public j1Module
 public:
 
 	j1Entity(Entity_TYPE type);
-	~j1Entity() {};
+	~j1Entity();
 
 	virtual bool Awake();
 	virtual bool Start();
@@ -29,7 +29,13 @@ public:
 	virtual bool PostUpdate();
 	bool CleanUp();
 
-	virtual void OnCollision(Collider*, Collider*) {}
+	virtual fPoint GetPosition();
+	virtual void SetPosition(const float& x, const float& y);
+
+	virtual bool Save(pugi::xml_node&);
+	virtual bool Load(pugi::xml_node&);
+
+	virtual void OnCollision(Collider*, Collider*);
 
 public:
 
@@ -38,6 +44,7 @@ public:
 	bool			sprite_flipY = false;
 	bool			sprite_flipX = false;
 	Entity_TYPE		type_entity;
+	Collider*		collider = nullptr;
 	SDL_Texture*	texture_entity = nullptr;
 	j1Animation*	currentAnimation_entity = nullptr;
 

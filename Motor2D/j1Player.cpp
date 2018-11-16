@@ -10,16 +10,35 @@
 #include "j1Input.h"
 #include "j1Player.h"
 #include "j1Audio.h"
+#include "j1EntityManager.h"
 
-
-j1Player::j1Player(){
-	name.create("player");
-}
-
-j1Player::j1Player(const float &x, const float &y) 
+j1Player::j1Player(Entity_TYPE type, InfoPlayer PInfo) : j1Entity(type)
 {
-	position.x = x;
-	position.y = y;
+	LOG("Loading Player Characer...");
+
+	offsetX = PInfo.offsetX;
+	offsetY = PInfo.offsetY;
+
+	speed = PInfo.speed;
+	max_speed = PInfo.max_speed;
+	max_jump_speed = PInfo.max_jump_speed;
+	acceleration = PInfo.acceleration;
+
+	jumpforce = PInfo.jumpforce;
+
+	threshold = PInfo.threshold;
+
+	idle = PInfo.idle;
+	run = PInfo.run;
+	jump = PInfo.jump;
+
+	idle.speed = run.speed = jump.speed = 0.2F;
+	idle.loop = run.loop = jump.loop = true;
+
+	jump_sfx = App->audio->LoadFx("audio/fx/Jump.wav");
+	death_sfx = App->audio->LoadFx("audio/fx/Hit_Hurt.wav");
+
+	currentAnimation_entity = &idle;
 }
 
 j1Player::~j1Player(){}
@@ -28,61 +47,15 @@ fPoint j1Player::GetPosition()
 {
 	return fPoint();
 }
+
 bool j1Player::Awake(pugi::xml_node& player)
 {
-	LOG("Loading Character");
-	bool ret = true;
-
-	//reading attributes from config
-	speed.x = player.child("speed").attribute("x").as_float();
-	speed.y = player.child("speed").attribute("y").as_float();
-	acceleration.x = player.child("acceleration").attribute("x").as_float();
-	acceleration.y = player.child("acceleration").attribute("y").as_float();
-	max_speed.x = player.child("maxSpeed").attribute("x").as_float();
-	max_speed.y = player.child("maxSpeed").attribute("y").as_float();
-	max_jump_speed = player.child("jump").attribute("maxJumpSpeed").as_float();
-	jumpforce = player.child("jump").attribute("jumpforce").as_float();
-	threshold = player.child("threshold").attribute("value").as_float();
-	offsetX = player.child("offset").attribute("x").as_int();
-	offsetY = player.child("offset").attribute("y").as_int();
-
-	for (pugi::xml_node rect = player.child("animation").child("rect"); rect; rect = rect.next_sibling("rect"))
-	{
-		if (rect.attribute("id").as_int() == 1)
-		{
-			idle.PushBack({ rect.attribute("x").as_int(), rect.attribute("y").as_int(), rect.attribute("w").as_int(), rect.attribute("h").as_int() });
-		}
-		else if (rect.attribute("id").as_int() == 2)
-		{
-			jump.PushBack({ rect.attribute("x").as_int(), rect.attribute("y").as_int(), rect.attribute("w").as_int(), rect.attribute("h").as_int() });
-		}
-		else if (rect.attribute("id").as_int() == 3)
-		{
-			run.PushBack({ rect.attribute("x").as_int(), rect.attribute("y").as_int(), rect.attribute("w").as_int(), rect.attribute("h").as_int() });
-		}
-	}
-
-	idle.speed = 0.2F;
-	idle.loop = true;
-
-	run.speed = 0.2F;
-	run.loop = true;
-
-	jump.speed = 0.2F;
-	jump.loop = true;
-
-	jump_sfx = App->audio->LoadFx("audio/fx/Jump.wav");
-	death_sfx = App->audio->LoadFx("audio/fx/Hit_Hurt.wav");
-
-	current_animation = &idle;
-
-	return ret;
-
+	return true;
 }
 
 bool j1Player::Start()
 {
-	player_texture = App->tex->Load("textures/Character_Spritesheet.png");
+	texture_entity = App->tex->Load("textures/Character_Spritesheet.png");
 	collider = App->collision->AddCollider({ 25,32,32,64 }, COLLIDER_PLAYER, this);
 	return true;
 }
@@ -103,7 +76,7 @@ bool j1Player::PreUpdate()
 	{
 		current_movement = RIGHT;
 
-		if (last_movement == RIGHT) flip_x = true;
+		if (last_movement == RIGHT) sprite_flipX = true;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
 	{
@@ -158,17 +131,17 @@ bool j1Player::PreUpdate()
 bool j1Player::Update(float dt)
 {
 	//we first check what will be the player horizontal movement so it has preference when for example you collide with ground it both axis at the same time
-	CheckMHorizontalMovement();
-	position.x += speed.x*dt;
-	collider->rect.x = (position.x + offsetX)*dt;
+	CheckMHorizontalMovement(dt);
+	position_entity.x += speed.x*dt;
+	collider->rect.x = (position_entity.x + offsetX)*dt;
 
-	CheckVerticalMovement();
-	CheckState();
+	CheckVerticalMovement(dt);
+	CheckState(dt);
 	
-	position.y += speed.y*dt;
-	collider->rect.y = (position.y + offsetY)*dt;
+	position_entity.y += speed.y*dt;
+	collider->rect.y = (position_entity.y + offsetY)*dt;
 
-	App->render->Blit(player_texture, position.x, position.y, &current_animation->GetCurrentFrame(), 1.0F, flip_x, flip_y);
+	App->render->Blit(texture_entity, position_entity.x, position_entity.y, &currentAnimation_entity->GetCurrentFrame(), 1.0F, sprite_flipX, sprite_flipY);
 
 
 	return true;
@@ -181,13 +154,13 @@ bool j1Player::PostUpdate()
 
 bool j1Player::CleanUp()
 {
-	App->tex->UnLoad(player_texture); // the only thing the player loads is a texture, so we unload it
-	player_texture = nullptr;
+	App->tex->UnLoad(texture_entity); // the only thing the player loads is a texture, so we unload it
+	texture_entity = nullptr;
 
 	return true;
 }
 
-void j1Player::CheckMHorizontalMovement()
+void j1Player::CheckMHorizontalMovement(float dt)
 {
 	if (current_movement == IDLE)
 	{
@@ -196,7 +169,7 @@ void j1Player::CheckMHorizontalMovement()
 
 	if (current_movement == LEFT)
 	{
-		flip_x = false;
+		sprite_flipX = false;
 		speed.x = -max_speed.x;
 		if (!god_mode) // we won't check for collisions while we're in godmode
 		{
@@ -210,7 +183,7 @@ void j1Player::CheckMHorizontalMovement()
 
 	if (current_movement == RIGHT)
 	{
-		flip_x = true;
+		sprite_flipX = true;
 		speed.x = max_speed.x;
 		if (!god_mode)// we won't check for collisions while we're in godmode
 		{
@@ -224,7 +197,7 @@ void j1Player::CheckMHorizontalMovement()
 	}
 }
 
-void j1Player::CheckVerticalMovement()
+void j1Player::CheckVerticalMovement(float dt)
 {
 	if (current_movement == UP)
 	{
@@ -250,7 +223,7 @@ void j1Player::CheckVerticalMovement()
 	}
 }
 
-void j1Player::CheckState()
+void j1Player::CheckState(float dt)
 {
 	if (!god_mode) // Setting the state to air will make us load the jump animation
 		// and we don't want that in godmode
@@ -281,20 +254,20 @@ void j1Player::CheckState()
 			}
 		}
 	}
-	current_animation = &jump;
+	currentAnimation_entity = &jump;
 	
 	if (current_state == ONFLOOR)
 	{
-		if (speed.x == 0)current_animation = &idle;
-		else current_animation = &run;
+		if (speed.x == 0)currentAnimation_entity = &idle;
+		else currentAnimation_entity = &run;
 	}
 }
 
 // Load player State
 bool j1Player::Load(pugi::xml_node& data)
 {
-	position.x = data.child("player").attribute("x").as_int();
-	position.y = data.child("player").attribute("y").as_int() -1;
+	position_entity.x = data.child("player").attribute("x").as_int();
+	position_entity.y = data.child("player").attribute("y").as_int() -1;
 
 	saved_position.x = data.child("player").attribute("x").as_int();
 	saved_position.y = data.child("player").attribute("y").as_int() -1;
@@ -307,8 +280,8 @@ bool j1Player::Save(pugi::xml_node& data) const
 {
 	pugi::xml_node cam = data.append_child("player");
 
-	cam.append_attribute("x") = position.x;
-	cam.append_attribute("y") = position.y;
+	cam.append_attribute("x") = position_entity.x;
+	cam.append_attribute("y") = position_entity.y;
 
 	return true;
 }
@@ -316,8 +289,8 @@ bool j1Player::Save(pugi::xml_node& data) const
 
 void j1Player::SetPosition(const float & x, const float & y)
 {
-	position.x = x;
-	position.y = y;
+	position_entity.x = x;
+	position_entity.y = y;
 }
 
 //On collision triggers when a collider overlaps with player collider

@@ -21,6 +21,7 @@ class j1Map;
 class j1SceneManager;
 class j1Player;
 class j1CollisionManager;
+class j1EntityManager;
 
 class j1App
 {
@@ -96,6 +97,7 @@ public:
 	j1Player*			player = nullptr;
 	j1CollisionManager* collision = nullptr;
 	j1PathFinding*		pathfinding = nullptr;
+	j1EntityManager*	entitymanager = nullptr;
 
 private:
 
