@@ -34,7 +34,7 @@ public:
 
 	bool CleanUp();
 
-	bool CreateEntity(Entity_TYPE type, int x, int y);
+	bool CreateEntity(Entity_TYPE type);
 
 	void DestroyEntity(j1Entity* entity);
 
