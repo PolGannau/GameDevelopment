@@ -129,9 +129,9 @@ void j1Render::UpdateCamera()
 	//RIGHT
 	//when player speed is greater than 0 and if he runs over the right limit, we give the camera the player's speed
 	int right_limit = -App->render->camera.x + App->render->camera.w / 2.2f;
-	if (App->player->speed.x > 0.0f && App->player->position_entity.x + App->player->collider->rect.w > right_limit)
+	if (App->entitymanager->player->speed.x > 0.0f && App->entitymanager->player->position_entity.x + App->entitymanager->player->collider->rect.w > right_limit)
 	{
-		App->render->camera.x -= App->player->speed.x;
+		App->render->camera.x -= App->entitymanager->player->speed.x;
 		if (-App->render->camera.x > App->map->data.width*App->map->data.tile_width)//Also, if the camerax + cameraw is going out of the map we stop it
 			App->render->camera.x = (-App->map->data.width*App->map->data.tile_width) - App->render->camera.w;
 	}
@@ -139,27 +139,27 @@ void j1Render::UpdateCamera()
 	//LEFT
 	//when player speed is less than 0 (so he's running left) and if he runs over left limit, we give the camera the player's speed
 	int left_limit = -App->render->camera.x + App->render->camera.w / 6;
-	if (App->player->speed.x < 0.0f && App->player->position_entity.x  <= left_limit)
+	if (App->entitymanager->player->speed.x < 0.0f && App->entitymanager->player->position_entity.x  <= left_limit)
 	{
-		App->render->camera.x += -App->player->speed.x;
+		App->render->camera.x += -App->entitymanager->player->speed.x;
 		if (-App->render->camera.x < 0)
 			App->render->camera.x = 0;
 	}
 
 	//UP
 	int top_limit = -App->render->camera.y + App->render->camera.h / 6;
-	if (App->player->speed.y < 0.0f && App->player->position_entity.y <= top_limit)
+	if (App->entitymanager->player->speed.y < 0.0f && App->entitymanager->player->position_entity.y <= top_limit)
 	{
-		App->render->camera.y -= App->player->speed.y;
+		App->render->camera.y -= App->entitymanager->player->speed.y;
 		if (-App->render->camera.y < 0)
 			App->render->camera.y = 0;
 	}
 
 	//DOWN
 	int bot_limit = -App->render->camera.y + App->render->camera.h / 2;
-	if (App->player->speed.y > 0.0f && App->player->position_entity.y + App->player->collider->rect.h > bot_limit)
+	if (App->entitymanager->player->speed.y > 0.0f && App->entitymanager->player->position_entity.y + App->entitymanager->player->collider->rect.h > bot_limit)
 	{
-		App->render->camera.y -= App->player->speed.y;
+		App->render->camera.y -= App->entitymanager->player->speed.y;
 		if (-(App->render->camera.y - App->render->camera.h) >= App->map->data.height * App->map->data.tile_height)
 			App->render->camera.y = -(App->map->data.height * App->map->data.tile_height - App->render->camera.h);
 	}

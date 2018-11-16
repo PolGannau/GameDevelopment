@@ -106,7 +106,7 @@ bool j1SceneManager::LoadSceneWithoutFade(j1Module* module_off, j1Module* module
 	module_on->Enable();
 	current_scene = module_on;
 	
-	App->player->SetPosition(App->player->saved_position.x, App->player->saved_position.y);
+	App->entitymanager->player->SetPosition(App->entitymanager->player->saved_position.x, App->entitymanager->player->saved_position.y);
 
 	return true;
 }

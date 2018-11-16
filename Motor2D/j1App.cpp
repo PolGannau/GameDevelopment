@@ -12,7 +12,6 @@
 #include "j1Scene2.h"
 #include "j1Map.h"
 #include "j1SceneManager.h"
-#include "j1Player.h"
 #include "j1CollisionManager.h"
 #include "j1Pathfinding.h"
 #include "j1EntityManager.h"
@@ -40,7 +39,6 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	collision = new j1CollisionManager();
 	entitymanager = new j1EntityManager();
 
-
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
 	AddModule(input);
@@ -52,7 +50,6 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(scene2, false);
 	AddModule(pathfinding);
-	AddModule(player);
 	AddModule(scenemanager);
 	AddModule(entitymanager);
 

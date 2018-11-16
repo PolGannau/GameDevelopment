@@ -88,7 +88,7 @@ COLLIDER_TYPE j1CollisionManager::GetCloserColliderDownType()
 {
 	COLLIDER_TYPE type;
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->player->collider->rect;
+	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
@@ -182,7 +182,7 @@ Collider* j1CollisionManager::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1M
 float j1CollisionManager::CollisionCorrectionDown()
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->player->collider->rect;
+	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type && (colliders[i]->type == COLLIDER_GROUND || colliders[i]->type == COLLIDER_PLATFORM))//We only want to collide this way with ground and platform colliders
@@ -205,7 +205,7 @@ float j1CollisionManager::CollisionCorrectionDown()
 float j1CollisionManager::CollisionCorrectionUp()
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->player->collider->rect;
+	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type == COLLIDER_GROUND)
@@ -228,7 +228,7 @@ float j1CollisionManager::CollisionCorrectionUp()
 float j1CollisionManager::CollisionCorrectionLeft()
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->player->collider->rect;
+	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
@@ -252,7 +252,7 @@ float j1CollisionManager::CollisionCorrectionLeft()
 float j1CollisionManager::CollisionCorrectionRight()
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->player->collider->rect;
+	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
