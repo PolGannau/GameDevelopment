@@ -3,6 +3,8 @@
 
 #Internally, it should use a structured entity system that should be described
 in an UML file (pdf) delivered in the same folder of the release.
+--Doing this.
+
 
 ##Flying enemy type that can pathfind to the player avoiding non-walkable areas
 
