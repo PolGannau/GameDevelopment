@@ -15,6 +15,7 @@
 #include "j1Player.h"
 #include "j1CollisionManager.h"
 #include "j1App.h"
+#include "Brofiler/Brofiler.h"
 
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
