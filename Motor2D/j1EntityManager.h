@@ -34,16 +34,19 @@ public:
 
 	bool CleanUp();
 
-	j1Entity* CreateEntity(Entity_TYPE type, int x, int y);
+	bool CreateEntity(Entity_TYPE type, int x, int y);
 
 	void DestroyEntity(j1Entity* entity);
 
 	void OnCollision(Collider* coll1, Collider* coll2);
 
 	p2List<j1Entity*>			entities;
+	pugi::xml_node				pathInfo;
+	j1Player*					player;
 
 private:
 
+	InfoPlayer					PInfo;
 };
 
 #endif // !__J1ENTITYMANAGER_H__
