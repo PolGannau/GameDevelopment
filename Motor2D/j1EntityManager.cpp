@@ -94,7 +94,7 @@ bool j1EntityManager::CleanUp()
 	for (int i = 0; i < entities.count(); i++)
 	{
 		if (entities[i] != nullptr)
-			entities[i]->Cleanup();
+			entities[i]->CleanUp();
 	}
 
 	return true;

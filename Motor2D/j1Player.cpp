@@ -157,16 +157,16 @@ bool j1Player::PreUpdate()
 
 bool j1Player::Update(float dt)
 {
-	//we firs check what will be the player horizontal movement so it has preference when for example you collide with ground it both axis at the same time
+	//we first check what will be the player horizontal movement so it has preference when for example you collide with ground it both axis at the same time
 	CheckMHorizontalMovement();
-	position.x += speed.x;
-	collider->rect.x = position.x + offsetX;
+	position.x += speed.x*dt;
+	collider->rect.x = (position.x + offsetX)*dt;
 
 	CheckVerticalMovement();
 	CheckState();
 	
-	position.y += speed.y;
-	collider->rect.y = position.y + offsetY;
+	position.y += speed.y*dt;
+	collider->rect.y = (position.y + offsetY)*dt;
 
 	App->render->Blit(player_texture, position.x, position.y, &current_animation->GetCurrentFrame(), 1.0F, flip_x, flip_y);
 
