@@ -8,7 +8,6 @@
 #include "j1Window.h"
 #include "j1Map.h"
 #include "j1Scene.h"
-#include "j1Scene2.h"
 #include "j1SceneManager.h"
 #include "j1Player.h"
 
@@ -34,8 +33,16 @@ bool j1Scene::Awake(pugi::xml_node&)
 bool j1Scene::Start()
 {
 	bool ret = true;
-
-	App->map->Load("MapScene1.tmx");
+	
+	switch (id) 
+	{
+	case 1:
+		App->map->Load("MapScene1.tmx");
+		break;
+	case 2:
+		App->map->Load("MapScene2.tmx");
+		break;
+	}
 
 	App->entitymanager->player->position_entity = { App->map->data.player_position.x, App->map->data.player_position.y };
 	App->entitymanager->player->death = false;
@@ -88,6 +95,7 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
+	App->map->CleanUp();
 	return true;
 }
 
