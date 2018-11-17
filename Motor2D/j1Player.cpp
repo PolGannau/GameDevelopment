@@ -32,7 +32,7 @@ j1Player::j1Player(Entity_TYPE type, InfoPlayer PInfo) : j1Entity(type)
 	run = PInfo.run;
 	jump = PInfo.jump;
 
-	idle.speed = run.speed = jump.speed = 0.2F;
+	idle.speed = run.speed = jump.speed = 0.4F;
 	idle.loop = run.loop = jump.loop = true;
 
 	jump_sfx = App->audio->LoadFx("audio/fx/Jump.wav");
