@@ -44,7 +44,7 @@ bool j1Scene::Start()
 		break;
 	}
 
-	App->entitymanager->player->position_entity = { App->map->data.player_position.x, App->map->data.player_position.y };
+	App->entitymanager->player->position = { App->map->data.player_position.x, App->map->data.player_position.y };
 	App->entitymanager->player->death = false;
 
 	App->render->camera.x = App->map->data.camera_position.x;
@@ -70,7 +70,7 @@ bool j1Scene::Update(float dt)
 {
 	App->render->UpdateCamera();
 
-	if (App->entitymanager->player->position_entity.x > App->map->data.win_position.x)
+	if (App->entitymanager->player->position.x > App->map->data.win_position.x)
 	{
 		App->scenemanager->LoadScene(2);
 	}

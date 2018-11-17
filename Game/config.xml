@@ -21,13 +21,13 @@
   <file_system>
     <path>data.zip</path>
   </file_system>
-  
+  <entities>
   <player>
     <speed x="0" y="0"/>
-    <maxSpeed x="5" y="10"/>
-    <acceleration x=".3F" y="0.1F"/>
-    <jump maxJumpSpeed="10" jumpforce="3"/>
-    <threshold value="0.1F"/>
+    <maxSpeed x="350" y="100"/>
+    <acceleration x="1.0F" y="100.0F"/>
+    <jump maxJumpSpeed="1100" jumpforce="8"/>
+    <threshold value="1.0F"/>
     <offset x="32" y="32"/>
     <animation>
       <rect id="1" x="0" y="96" w="96" h="96" />
@@ -41,6 +41,7 @@
       <rect id="3" x="288" y="192" w="96" h="96" />
     </animation>
   </player>
+  </entities>
   
   <map>
     <folder>maps/</folder>

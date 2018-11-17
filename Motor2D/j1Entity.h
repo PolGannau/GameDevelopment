@@ -39,14 +39,14 @@ public:
 
 public:
 
-	fPoint			position_entity;
+	fPoint			position;
 	fPoint			speed_entity;
 	bool			sprite_flipY = false;
 	bool			sprite_flipX = false;
 	Entity_TYPE		type_entity;
 	Collider*		collider = nullptr;
-	SDL_Texture*	texture_entity = nullptr;
-	j1Animation*	currentAnimation_entity = nullptr;
+	SDL_Texture*	texture = nullptr;
+	j1Animation*	currentAnimation = nullptr;
 
 };
 
