@@ -9,8 +9,8 @@
 	<:anonymous />
 	<scene id="2" />
 	<pathfinding />
-	<manager />
+	<entities />
 	<renderer>
-		<camera x="0" y="-350" />
+		<camera x="0" y="-352" />
 	</renderer>
 </game_state>
