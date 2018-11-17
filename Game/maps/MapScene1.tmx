@@ -8245,7 +8245,7 @@
   <object id="201" x="5313" y="832" width="63" height="31"/>
  </objectgroup>
  <objectgroup name="Position_Layer">
-  <object id="220" name="PlayerPosition" x="219.394" y="133.333"/>
+  <object id="220" name="PlayerPosition" x="240.606" y="527.727"/>
   <object id="221" name="CameraPosition" x="0" y="350"/>
   <object id="223" name="WinPosition" x="7616" y="521.333"/>
  </objectgroup>

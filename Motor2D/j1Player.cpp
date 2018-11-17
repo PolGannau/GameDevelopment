@@ -203,8 +203,8 @@ void j1Player::CheckVerticalMovement(float dt)
 	{
 		if (hasJumped)
 		{
-				current_state = AIR;
-			speed.y = (jumpforce * -max_jump_speed + (1 - jumpforce) * speed.y);
+			current_state = AIR;
+			speed.y = floor(-max_jump_speed*dt);
 			hasJumped = false;
 
 		}
@@ -214,9 +214,7 @@ void j1Player::CheckVerticalMovement(float dt)
 	{
 		if (down_counter > 0)
 		{
-			speed.y = (acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y);
-			speed.y = floor(speed.y*dt);
-			if (fabs(speed.y) < threshold) speed.y = 0;
+			speed.y = acceleration.y;
 			down_counter--;
 		}
 		else current_movement = IDLE;
@@ -234,9 +232,8 @@ void j1Player::CheckState(float dt)
 	// we won't check for collisions while we're in godmode
 	if (current_movement != DOWN && !god_mode)
 	{
-		speed.y = acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y;
-		speed.y = floor(speed.y*dt);
-		if (fabs(speed.y) < threshold) speed.y = 0;
+		speed.y += floor(acceleration.y*dt);
+		//if (fabs(speed.y) < threshold) speed.y = 0;
 		if (speed.y > 0)
 		{
 
@@ -244,7 +241,7 @@ void j1Player::CheckState(float dt)
 			if (distance < speed.y)
 			{
 				speed.y = distance;
-				if (distance == 0)current_state = ONFLOOR;
+				if (distance <= 1)current_state = ONFLOOR;
 			}
 		}
 		else if (speed.y < 0)
