@@ -2,6 +2,8 @@
 #include "j1Input.h"
 #include "j1Render.h"
 #include "j1CollisionManager.h"
+#include "j1EntityManager.h"
+#include "j1Entity.h"
 #include "j1Player.h"
 #include "p2Log.h"
 

@@ -5,6 +5,8 @@
 #include "j1Animation.h"
 #include "j1Entity.h"
 
+class j1Player;
+
 struct InfoPlayer
 {
 	j1Animation		idle, jump, run;
@@ -18,8 +20,6 @@ struct InfoEnemy
 {
 
 };
-
-class j1Player;
 
 class j1EntityManager : public j1Module
 {
@@ -41,7 +41,7 @@ public:
 	void OnCollision(Collider* coll1, Collider* coll2);
 
 	p2List<j1Entity*>			entities;
-	pugi::xml_node				pathInfo;
+	pugi::xml_node				pathNode;
 	j1Player*					player;
 
 private:

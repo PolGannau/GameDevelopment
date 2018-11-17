@@ -5,7 +5,7 @@
 
 j1EntityManager::j1EntityManager()
 {
-	name.create("manager");
+	name.create("entities");
 }
 
 bool j1EntityManager::Awake(pugi::xml_node& node)
