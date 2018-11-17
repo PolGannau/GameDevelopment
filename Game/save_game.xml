@@ -7,7 +7,10 @@
 	<:anonymous />
 	<map />
 	<:anonymous />
-	<scene id="2" />
+  <player>
+    <player x="180" y="1094.46545" />
+  </player>
+	<scene id="1" />
 	<pathfinding />
 	<entities />
 	<renderer>

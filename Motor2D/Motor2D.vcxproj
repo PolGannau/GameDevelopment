@@ -124,6 +124,12 @@
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
     <ClInclude Include="j1SceneManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Game\config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Game\maps\MapScene1.tmx" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

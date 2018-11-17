@@ -7,7 +7,7 @@
   </app>
 	
   <renderer>
-    <vsync value="true"/>
+    <vsync value="false"/>
   </renderer>
 
   <window>
@@ -24,9 +24,9 @@
   <entities>
   <player>
     <speed x="0" y="0"/>
-    <maxSpeed x="350" y="100"/>
-    <acceleration x="1.0F" y="100.0F"/>
-    <jump maxJumpSpeed="1100" jumpforce="8"/>
+    <maxSpeed x="350" y="500"/>
+    <acceleration x="50F" y="1F"/>
+    <jump maxJumpSpeed="1000" jumpforce="3"/>
     <threshold value="1.0F"/>
     <offset x="32" y="32"/>
     <animation>

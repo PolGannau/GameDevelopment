@@ -90,7 +90,7 @@ bool j1Player::PreUpdate()
 		if (!god_mode) //we only jump if the player isn't in godmode
 		{
 			if (current_state == ONFLOOR) {
-				current_movement = UP;
+ 				current_movement = UP;
 				hasJumped = true;
 				App->audio->PlayFx(jump_sfx);
 			}
@@ -100,7 +100,7 @@ bool j1Player::PreUpdate()
 			god_mode_flying = true;
 			speed.y = -1.F;
 		}
-		else
+		else if (god_mode && god_mode_flying)
 		{
 			speed.y = 1.F;  
 			god_mode_flying = false;
@@ -170,7 +170,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 	if (current_movement == LEFT)
 	{
 		sprite_flipX = false;
-		speed.x = -max_speed.x*dt;
+		speed.x = floor(-max_speed.x*dt);
 		if (!god_mode) // we won't check for collisions while we're in godmode
 		{
 			float distance = App->collision->CollisionCorrectionLeft();
@@ -184,7 +184,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 	if (current_movement == RIGHT)
 	{
 		sprite_flipX = true;
-		speed.x = max_speed.x*dt;
+		speed.x = floor(max_speed.x*dt);
 		if (!god_mode)// we won't check for collisions while we're in godmode
 		{
 			float distance = App->collision->CollisionCorrectionRight();
@@ -215,6 +215,7 @@ void j1Player::CheckVerticalMovement(float dt)
 		if (down_counter > 0)
 		{
 			speed.y = (acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y);
+			speed.y = floor(speed.y*dt);
 			if (fabs(speed.y) < threshold) speed.y = 0;
 			down_counter--;
 		}
@@ -234,6 +235,7 @@ void j1Player::CheckState(float dt)
 	if (current_movement != DOWN && !god_mode)
 	{
 		speed.y = acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y;
+		speed.y = floor(speed.y*dt);
 		if (fabs(speed.y) < threshold) speed.y = 0;
 		if (speed.y > 0)
 		{
