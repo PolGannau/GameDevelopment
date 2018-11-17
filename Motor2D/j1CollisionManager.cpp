@@ -75,7 +75,6 @@ bool j1CollisionManager::PreUpdate()
 // Called before render is available
 bool j1CollisionManager::Update(float dt)
 {
-
 	return true;
 }
 

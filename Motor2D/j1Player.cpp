@@ -132,14 +132,14 @@ bool j1Player::Update(float dt)
 {
 	//we first check what will be the player horizontal movement so it has preference when for example you collide with ground it both axis at the same time
 	CheckMHorizontalMovement(dt);
-	position.x += speed.x*dt;
-	collider->rect.x = (position.x + offsetX)*dt;
+	position.x += speed.x;
+	collider->rect.x = (position.x + offsetX);
 
 	CheckVerticalMovement(dt);
 	CheckState(dt);
 	
-	position.y += speed.y*dt;
-	collider->rect.y = (position.y + offsetY)*dt;
+	position.y += speed.y;
+	collider->rect.y = (position.y + offsetY);
 
 	App->render->Blit(texture, position.x, position.y, &currentAnimation->GetCurrentFrame(), 1.0F, sprite_flipX, sprite_flipY);
 
@@ -170,7 +170,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 	if (current_movement == LEFT)
 	{
 		sprite_flipX = false;
-		speed.x = -max_speed.x;
+		speed.x = -max_speed.x*dt;
 		if (!god_mode) // we won't check for collisions while we're in godmode
 		{
 			float distance = App->collision->CollisionCorrectionLeft();
@@ -184,7 +184,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 	if (current_movement == RIGHT)
 	{
 		sprite_flipX = true;
-		speed.x = max_speed.x;
+		speed.x = max_speed.x*dt;
 		if (!god_mode)// we won't check for collisions while we're in godmode
 		{
 			float distance = App->collision->CollisionCorrectionRight();
@@ -204,7 +204,7 @@ void j1Player::CheckVerticalMovement(float dt)
 		if (hasJumped)
 		{
 				current_state = AIR;
-			speed.y = jumpforce * -max_jump_speed + (1 - jumpforce) * speed.y;
+			speed.y = (jumpforce * -max_jump_speed + (1 - jumpforce) * speed.y)*dt;
 			hasJumped = false;
 
 		}
@@ -214,7 +214,7 @@ void j1Player::CheckVerticalMovement(float dt)
 	{
 		if (down_counter > 0)
 		{
-			speed.y = acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y;
+			speed.y = (acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y)*dt;
 			if (fabs(speed.y) < threshold) speed.y = 0;
 			down_counter--;
 		}
