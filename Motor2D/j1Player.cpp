@@ -204,7 +204,7 @@ void j1Player::CheckVerticalMovement(float dt)
 		if (hasJumped)
 		{
 				current_state = AIR;
-			speed.y = (jumpforce * -max_jump_speed + (1 - jumpforce) * speed.y)*dt;
+			speed.y = (jumpforce * -max_jump_speed + (1 - jumpforce) * speed.y);
 			hasJumped = false;
 
 		}
@@ -214,7 +214,7 @@ void j1Player::CheckVerticalMovement(float dt)
 	{
 		if (down_counter > 0)
 		{
-			speed.y = (acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y)*dt;
+			speed.y = (acceleration.y * max_speed.y + (1 - acceleration.y) * speed.y);
 			if (fabs(speed.y) < threshold) speed.y = 0;
 			down_counter--;
 		}
