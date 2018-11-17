@@ -214,7 +214,7 @@ void j1Player::CheckVerticalMovement(float dt)
 	{
 		if (down_counter > 0)
 		{
-			speed.y = acceleration.y;
+			speed.y = acceleration.y/6;
 			down_counter--;
 		}
 		else current_movement = IDLE;
