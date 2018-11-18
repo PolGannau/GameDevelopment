@@ -11,8 +11,7 @@ enum STATE {ONFLOOR, AIR, DEATH};
 
 struct InfoPlayer;
 
-class j1Player :
-	public j1Entity
+class j1Player : public j1Entity
 {
 private:
 

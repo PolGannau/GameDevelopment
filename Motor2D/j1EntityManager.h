@@ -18,7 +18,8 @@ struct InfoPlayer
 
 struct InfoEnemy
 {
-
+	j1Animation		idle, move;
+	fPoint			speed, max_speed, acceleration;
 };
 
 class j1EntityManager : public j1Module
