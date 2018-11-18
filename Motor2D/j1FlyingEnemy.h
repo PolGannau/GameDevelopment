@@ -8,7 +8,7 @@
 
 struct InfoFlyEnemy;
 
-class j1FlyingEnemy : j1Enemy
+class j1FlyingEnemy : public j1Enemy
 {
 public:
 

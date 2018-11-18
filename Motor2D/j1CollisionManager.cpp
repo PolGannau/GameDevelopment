@@ -17,6 +17,7 @@ j1CollisionManager::j1CollisionManager()
 	matrix[COLLIDER_PLAYER][COLLIDER_GROUND] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_LIMIT] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLATFORM] = false;
+	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = true;
 }
 
 // Destructor

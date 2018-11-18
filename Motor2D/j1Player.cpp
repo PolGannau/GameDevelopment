@@ -65,32 +65,32 @@ bool j1Player::PreUpdate()
 
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)//if players presses A we go lef
 	{
-		current_movement = LEFT;
+		currMove = LEFT;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)//if key A releases we stop
 	{
-		current_movement = IDLE;
+		currMove = IDLE;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)//right
 	{
-		current_movement = RIGHT;
+		currMove = RIGHT;
 
-		if (last_movement == RIGHT) sprite_flipX = true;
+		if (lastMove == RIGHT) sprite_flipX = true;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
 	{
-		current_movement = IDLE;
+		currMove = IDLE;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)current_movement = IDLE;//if player hits both x axes movement keys we stop
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)currMove = IDLE;//if player hits both x axes movement keys we stop
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)//when space is pressed we check if the character state is on floor and also if he hasn't  so we can jump
 	{
 		if (!god_mode) //we only jump if the player isn't in godmode
 		{
-			if (current_state == ONFLOOR) {
- 				current_movement = UP;
+			if (currState == ONFLOOR) {
+ 				currMove = UP;
 				hasJumped = true;
 				App->audio->PlayFx(jump_sfx);
 			}
@@ -108,13 +108,13 @@ bool j1Player::PreUpdate()
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && App->collision->GetCloserColliderDownType() == COLLIDER_PLATFORM) {
-		current_movement = DOWN;
+		currMove = DOWN;
 		down_counter = 5;
 	}
 	//we save last movement to know when to flip the graphic
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)last_movement = LEFT;
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)lastMove = LEFT;
 
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)last_movement = RIGHT;
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)lastMove = RIGHT;
 	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) // A simple binary state changer
 	{
 		if (!god_mode)
@@ -162,12 +162,12 @@ bool j1Player::CleanUp()
 
 void j1Player::CheckMHorizontalMovement(float dt)
 {
-	if (current_movement == IDLE)
+	if (currMove == IDLE)
 	{
 		speed.x = 0;
 	}
 
-	if (current_movement == LEFT)
+	if (currMove == LEFT)
 	{
 		sprite_flipX = false;
 		speed.x = floor(-max_speed.x*dt);
@@ -181,7 +181,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 		}
 	}
 
-	if (current_movement == RIGHT)
+	if (currMove == RIGHT)
 	{
 		sprite_flipX = true;
 		speed.x = floor(max_speed.x*dt);
@@ -199,25 +199,25 @@ void j1Player::CheckMHorizontalMovement(float dt)
 
 void j1Player::CheckVerticalMovement(float dt)
 {
-	if (current_movement == UP)
+	if (currMove == UP)
 	{
 		if (hasJumped)
 		{
-			current_state = AIR;
+			currState = AIR;
 			speed.y = floor(-max_jump_speed*dt);
 			hasJumped = false;
 
 		}
 	}
 
-	if (current_movement == DOWN)
+	if (currMove == DOWN)
 	{
 		if (down_counter > 0)
 		{
 			speed.y = acceleration.y/6;
 			down_counter--;
 		}
-		else current_movement = IDLE;
+		else currMove = IDLE;
 		
 	}
 }
@@ -227,10 +227,10 @@ void j1Player::CheckState(float dt)
 	if (!god_mode) // Setting the state to air will make us load the jump animation
 		// and we don't want that in godmode
 	{
-		current_state = AIR;
+		currState = AIR;
 	}
 	// we won't check for collisions while we're in godmode
-	if (current_movement != DOWN && !god_mode)
+	if (currMove != DOWN && !god_mode)
 	{
 		speed.y += floor(acceleration.y*dt);
 		//if (fabs(speed.y) < threshold) speed.y = 0;
@@ -241,7 +241,7 @@ void j1Player::CheckState(float dt)
 			if (distance < speed.y)
 			{
 				speed.y = distance;
-				if (distance <= 1)current_state = ONFLOOR;
+				if (distance <= 1)currState = ONFLOOR;
 			}
 		}
 		else if (speed.y < 0)
@@ -255,7 +255,7 @@ void j1Player::CheckState(float dt)
 	}
 	currentAnimation = &jump;
 	
-	if (current_state == ONFLOOR)
+	if (currState == ONFLOOR)
 	{
 		if (speed.x == 0)currentAnimation = &idle;
 		else currentAnimation = &run;
@@ -313,7 +313,7 @@ void j1Player::Die()
 		{
 			App->audio->PlayFx(death_sfx);
 			death = true;
-			current_movement = IDLE;
+			currMove = IDLE;
 		}
 		App->scenemanager->ReloadScene();
 	}

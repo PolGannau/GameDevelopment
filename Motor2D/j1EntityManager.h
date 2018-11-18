@@ -20,12 +20,14 @@ struct InfoFlyEnemy
 {
 	j1Animation		idle, move;
 	fPoint			speed, max_speed, acceleration;
+	float			trigger;
 };
 
 struct InfoGroEnemy
 {
 	j1Animation		idle, move;
 	fPoint			speed, max_speed, acceleration;
+	float			trigger;
 };
 
 class j1EntityManager : public j1Module
@@ -55,8 +57,8 @@ private:
 
 	InfoPlayer					PInfo;
 
-	InfoGroEnemy					GroundEnemy;
-	InfoFlyEnemy					FlyEnemy
+	InfoGroEnemy				GroundEInfo;
+	InfoFlyEnemy				FlyEInfo;
 };
 
 #endif // !__J1ENTITYMANAGER_H__

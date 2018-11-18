@@ -6,9 +6,6 @@
 #include "j1Animation.h"
 #include "j1Entity.h"
 
-enum MOVEMENT { IDLE, RIGHT, LEFT, UP, DOWN };
-enum STATE {ONFLOOR, AIR, DEATH};
-
 struct InfoPlayer;
 
 class j1Player : public j1Entity
@@ -33,8 +30,6 @@ private:
 	bool				god_mode = false;
 	bool				god_mode_flying = false;
 
-
-
 public:
 	fPoint				last_position, saved_position; 
 	float				jumpforce, max_jump_speed, threshold;
@@ -47,10 +42,6 @@ public:
 
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&) const;
-
-	STATE				current_state;
-	MOVEMENT			last_movement;
-	MOVEMENT			current_movement = IDLE;
 
 	bool Awake(pugi::xml_node&);
 

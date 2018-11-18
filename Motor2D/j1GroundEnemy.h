@@ -8,11 +8,11 @@
 
 struct InfoGroEnemy;
 
-class j1GroundEnemy : j1Enemy
+class j1GroundEnemy : public j1Enemy
 {
 public:
 
-	j1GroundEnemy(Entity_TYPE type, InfoFlyEnemy GroundInfo);
+	j1GroundEnemy(Entity_TYPE, InfoFlyEnemy);
 	~j1GroundEnemy();
 
 	bool Start();
