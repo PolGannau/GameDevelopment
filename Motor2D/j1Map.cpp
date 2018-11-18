@@ -247,6 +247,12 @@ bool j1Map::Load(const char* file_name)
 
 	LoadPositionLayer(PlayerPosition);
 
+	pugi::xml_node position_enemy;
+
+	position_enemy = map_file.child("map").find_child_by_attribute("name", "Enemies_position_Layer");
+
+	LoadEnemiesPosition(position_enemy);
+
 	if(ret == true)
 	{
 		LOG("Successfully parsed map XML file: %s", file_name);
@@ -497,4 +503,20 @@ bool j1Map::LoadImageLayer(pugi::xml_node& node, BgImages* bg_image)
 	bg_image->parallax_speed = node.child("properties").find_child_by_attribute("name", "parallax_speed").attribute("value").as_float();
 	bg_image->texture = App->tex->Load(PATH(folder.GetString(), node.child("image").attribute("source").as_string()));
 	return ret;
+}
+
+bool j1Map::LoadEnemiesPosition(pugi::xml_node & node)
+{
+	int i = 0;
+	for (pugi::xml_node enemy = node.child("object"); enemy; enemy.next_sibling("object"))
+	{
+		p2SString name = enemy.attribute("name").as_string();
+		if (name == "ground_enemy") {
+			data.groundEnemies_Position.add({ enemy.attribute("x").as_float(), enemy.attribute("y").as_float() });
+		}
+		else if (name == "flying_enemy") {
+			data.flyingEnemies_Position.add({ enemy.attribute("x").as_float(), enemy.attribute("y").as_float() });
+		}
+	}
+	return true;
 }

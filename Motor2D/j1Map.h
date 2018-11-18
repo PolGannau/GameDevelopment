@@ -71,6 +71,7 @@ struct MapData
 	int					height;
 	int					tile_width;
 	int					tile_height;
+	p2List<fPoint>		groundEnemies_Position, flyingEnemies_Position;
 	SDL_Color			background_color;
 	MapTypes			type;
 	p2List<TileSet*>	tilesets;
@@ -122,13 +123,15 @@ private:
 	bool LoadPositionLayer(pugi::xml_node& node);
 	//loads background
 	bool LoadImageLayer(pugi::xml_node& node, BgImages* bg_image);
+	//loads the enemies on its position
+	bool LoadEnemiesPosition(pugi::xml_node& node);
 	
 	//gets the tileset that contains that specific tile id
 	TileSet* GetTilesetFromTileId(int id) const;
 
 public:
 
-	MapData data;
+	MapData				data;
 
 private:
 
