@@ -219,9 +219,26 @@ void j1App::FinishUpdate()
 	uint32 last_frame_ms = frame_time.Read();
 	uint32 frames_on_last_update = prev_last_sec_frame_count;
 
+	p2SString cap = "";
+	if (cap_on)
+	{
+		if (last_frame_ms < frame_rate)
+		{
+			j1PerfTimer delay_timer;
+			SDL_Delay(frame_rate - last_frame_ms);
+		}
+		cap = "ON";
+	}
+	else cap = "OFF";
+
+	p2SString vsync = "ON";
+
+	if (vsync_on)vsync = "ON";
+	else vsync = "OFF";
+
 	static char title[256];
-	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %02u Last sec frames: %i  Time since startup: %.3f Frame Count: %lu ",
-		avg_fps, last_frame_ms, frames_on_last_update, seconds_since_startup, frame_count);
+	sprintf_s(title, 256, "Development Game - Last sec frames: %i - Av.FPS: %.2f - Last frame ms: %02u - Framerate cap: %s - Vsync: %s",
+		frames_on_last_update, avg_fps, last_frame_ms, cap.GetString(), vsync.GetString());
 	App->win->SetTitle(title);
 
 	j1PerfTimer delay_timer;
