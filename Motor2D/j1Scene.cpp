@@ -48,18 +48,19 @@ bool j1Scene::Start()
 		break;
 	}
 
+	
 	for (int i = 0; i < App->map->data.flyingEnemies_Position.count(); i++)
 	{
 		App->entitymanager->CreateEntity(Entity_TYPE::GROUND_ENEMY);
-		j1Entity* axe_man = App->entitymanager->entities.end->data;
-		axe_man->position = App->map->data.flyingEnemies_Position.At(i)->data;
+		j1Entity* ground_enemy = App->entitymanager->entities.end->data;
+		ground_enemy->position = App->map->data.flyingEnemies_Position.At(i)->data;
 	}
 
 	for (int i = 0; i < App->map->data.groundEnemies_Position.count(); i++)
 	{
-		App->entitymanager->CreateEntity(Entity_TYPE::GROUND_ENEMY);
-		j1Entity* bee = App->entitymanager->entities.end->data;
-		bee->position = App->map->data.groundEnemies_Position.At(i)->data;
+		App->entitymanager->CreateEntity(Entity_TYPE::FLYING_ENEMY);
+		j1Entity* flying_enemy = App->entitymanager->entities.end->data;
+		flying_enemy->position = App->map->data.groundEnemies_Position.At(i)->data;
 	}
 
 	App->entitymanager->player->position = { App->map->data.player_position.x, App->map->data.player_position.y };
@@ -68,7 +69,7 @@ bool j1Scene::Start()
 	App->render->camera.x = App->map->data.camera_position.x;
 	App->render->camera.y = App->map->data.camera_position.y;
 
-	App->audio->PlayMusic("audio/music/maintheme.ogg", 0.1f);
+	App->audio->PlayMusic("audio/music/maintheme.ogg", 0.1F);
 
 	return ret;
 }

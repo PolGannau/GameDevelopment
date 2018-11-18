@@ -56,7 +56,7 @@
     </ground_enemy>
     <fly_enemy>
       <speed x="0.F" y="0.F"/>
-      <acceleration x="1.F" y="100.F" />
+      <acceleration x="1.F" y="0.F" />
       <range value="600" />
       <animation>
         <rect id="1" x="3" y="20" w="25" h="11" />

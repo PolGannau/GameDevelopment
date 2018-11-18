@@ -101,6 +101,8 @@ bool j1GroundEnemy::Update(float dt)
 	position.y += speed_entity.y;
 	collider->rect.y = position.y;
 
+	
+
 	return true;
 }
 

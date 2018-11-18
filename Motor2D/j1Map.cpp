@@ -554,7 +554,7 @@ bool j1Map::LoadImageLayer(pugi::xml_node& node, BgImages* bg_image)
 bool j1Map::LoadEnemiesPosition(pugi::xml_node & node)
 {
 	int i = 0;
-	for (pugi::xml_node enemy = node.child("object"); enemy; enemy.next_sibling("object"))
+	for (pugi::xml_node enemy = node.child("object"); enemy; enemy = enemy.next_sibling("object"))
 	{
 		p2SString name = enemy.attribute("name").as_string();
 		if (name == "ground_enemy") {
