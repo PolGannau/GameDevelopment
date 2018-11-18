@@ -152,7 +152,7 @@ bool j1EntityManager::CreateEntity(Entity_TYPE type)
 		break;
 
 	case Entity_TYPE::FLYING_ENEMY: {
-		j1FlyingEnemy* fenemy = new j1FlyingEnemy(type, FlyingEnemy);
+		j1FlyingEnemy* fenemy = new j1FlyingEnemy(type, FlyEInfo);
 		if (fenemy != nullptr)
 			entities.add(fenemy);
 	}
