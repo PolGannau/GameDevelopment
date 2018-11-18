@@ -33,15 +33,33 @@ bool j1Scene::Awake(pugi::xml_node&)
 bool j1Scene::Start()
 {
 	bool ret = true;
-	
+	uchar* idata = nullptr;
+
 	switch (id) 
 	{
 	case 1:
 		App->map->Load("MapScene1.tmx");
+		int w, h;
+		if (App->map->WalkabilityMap(w, h, &idata))
+			RELEASE_ARRAY(idata);
 		break;
 	case 2:
 		App->map->Load("MapScene2.tmx");
 		break;
+	}
+
+	for (int i = 0; i < App->map->data.flyingEnemies_Position.count(); i++)
+	{
+		App->entitymanager->CreateEntity(Entity_TYPE::GROUND_ENEMY);
+		j1Entity* axe_man = App->entitymanager->entities.end->data;
+		axe_man->position = App->map->data.flyingEnemies_Position.At(i)->data;
+	}
+
+	for (int i = 0; i < App->map->data.groundEnemies_Position.count(); i++)
+	{
+		App->entitymanager->CreateEntity(Entity_TYPE::GROUND_ENEMY);
+		j1Entity* bee = App->entitymanager->entities.end->data;
+		bee->position = App->map->data.groundEnemies_Position.At(i)->data;
 	}
 
 	App->entitymanager->player->position = { App->map->data.player_position.x, App->map->data.player_position.y };
