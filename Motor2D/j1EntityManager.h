@@ -16,7 +16,13 @@ struct InfoPlayer
 	float			threshold;
 };
 
-struct InfoEnemy
+struct InfoFlyEnemy
+{
+	j1Animation		idle, move;
+	fPoint			speed, max_speed, acceleration;
+};
+
+struct InfoGroEnemy
 {
 	j1Animation		idle, move;
 	fPoint			speed, max_speed, acceleration;
@@ -48,6 +54,9 @@ public:
 private:
 
 	InfoPlayer					PInfo;
+
+	InfoGroEnemy					GroundEnemy;
+	InfoFlyEnemy					FlyEnemy
 };
 
 #endif // !__J1ENTITYMANAGER_H__
