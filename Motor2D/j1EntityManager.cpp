@@ -1,5 +1,7 @@
 #include "j1App.h"
 #include "j1EntityManager.h"
+#include "j1Entity.h"
+#include "j1GroundEnemy.h"
 #include "j1Player.h"
 #include "p2Log.h"
 
@@ -138,6 +140,12 @@ bool j1EntityManager::CreateEntity(Entity_TYPE type)
 		player = new j1Player(type, PInfo);
 		if (player != nullptr)
 			entities.add(player);
+		break;
+
+	case Entity_TYPE::GROUND_ENEMY:
+		j1GroundEnemy* genemy = new j1GroundEnemy(type, GroundEInfo);
+		if (genemy != nullptr)
+			entities.add(genemy);
 		break;
 
 	default:

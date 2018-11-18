@@ -4,7 +4,6 @@
 
 j1Enemy::j1Enemy(Entity_TYPE type) :j1Entity(type)
 {
-	this->type_entity = type;
 }
 
 j1Enemy::~j1Enemy()

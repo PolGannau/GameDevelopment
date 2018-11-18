@@ -11,7 +11,7 @@
 #include "j1Scene.h"
 #include "Brofiler/Brofiler.h"
 
-j1GroundEnemy::j1GroundEnemy(Entity_TYPE type, InfoGroEnemy GroundEInfo)
+j1GroundEnemy::j1GroundEnemy(Entity_TYPE type, InfoGroEnemy GroundEInfo) :j1Enemy(type)
 {
 	LOG("Loading Ground Enemies...");
 	speed_entity = GroundEInfo.speed;

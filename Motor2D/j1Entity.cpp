@@ -1,8 +1,7 @@
 #include "j1Entity.h"
 
-j1Entity::j1Entity(Entity_TYPE type)
+j1Entity::j1Entity(Entity_TYPE type):type_entity(type)
 {
-	this->type_entity = type;
 }
 
 j1Entity::~j1Entity() {}
