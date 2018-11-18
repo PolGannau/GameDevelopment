@@ -136,18 +136,20 @@ bool j1EntityManager::CreateEntity(Entity_TYPE type)
 {
 	switch (type)
 	{
-	case Entity_TYPE::PLAYER:
+	case Entity_TYPE::PLAYER: {
 		player = new j1Player(type, PInfo);
 		if (player != nullptr)
 			entities.add(player);
+	}
 		break;
 
-	case Entity_TYPE::GROUND_ENEMY:
+	case Entity_TYPE::GROUND_ENEMY: {
+
 		j1GroundEnemy* genemy = new j1GroundEnemy(type, GroundEInfo);
 		if (genemy != nullptr)
 			entities.add(genemy);
+	}
 		break;
-
 	default:
 		break;
 	}
