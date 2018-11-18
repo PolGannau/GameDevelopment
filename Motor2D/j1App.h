@@ -7,6 +7,7 @@
 #include "j1PerfTimer.h"
 #include "j1Timer.h"
 #include "j1EntityManager.h"
+#include "Brofiler/Brofiler.h"
 #include "PugiXml\src\pugixml.hpp"
 
 // Modules
@@ -83,6 +84,9 @@ private:
 	bool SavegameNow() const;
 
 public:
+
+	bool				cap_on = true;
+	bool				vsync_on = false;
 
 	// Modules
 	j1Window*			win = nullptr;

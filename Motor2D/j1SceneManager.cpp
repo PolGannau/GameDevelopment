@@ -44,6 +44,13 @@ bool j1SceneManager::Update(float dt)
 	if (current_step == fade_step::none)
 		return true;
 
+	if (App->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN) {
+		if (App->cap_on)App->cap_on = false;
+		else App->cap_on = true;
+		if (!App->vsync_on)App->vsync_on = true;
+		else App->vsync_on = false;
+	}
+
 	Uint32 now = SDL_GetTicks() - start_time;
 	float normalized = MIN(1.0f, (float)now / (float)total_time);
 
