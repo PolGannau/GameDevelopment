@@ -28,6 +28,8 @@ public:
 private:
 	j1Animation			idle;
 	j1Animation			move;
+
+	float				triggerRadius;
 };
 
 #endif // !__j1FlyingEnemy_H__

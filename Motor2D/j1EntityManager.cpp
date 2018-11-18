@@ -2,6 +2,7 @@
 #include "j1EntityManager.h"
 #include "j1Entity.h"
 #include "j1GroundEnemy.h"
+#include "j1FlyingEnemy.h"
 #include "j1Player.h"
 #include "p2Log.h"
 
@@ -144,10 +145,16 @@ bool j1EntityManager::CreateEntity(Entity_TYPE type)
 		break;
 
 	case Entity_TYPE::GROUND_ENEMY: {
-
 		j1GroundEnemy* genemy = new j1GroundEnemy(type, GroundEInfo);
 		if (genemy != nullptr)
 			entities.add(genemy);
+	}
+		break;
+
+	case Entity_TYPE::FLYING_ENEMY: {
+		j1FlyingEnemy* fenemy = new j1FlyingEnemy(type, FlyingEnemy);
+		if (fenemy != nullptr)
+			entities.add(fenemy);
 	}
 		break;
 	default:
