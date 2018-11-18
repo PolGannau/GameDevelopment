@@ -35,7 +35,7 @@ class j1Entity : public j1Module
 {
 public:
 
-	j1Entity(Entity_TYPE type);
+	j1Entity(Entity_TYPE);
 	~j1Entity();
 
 	virtual bool Awake();

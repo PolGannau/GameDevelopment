@@ -64,10 +64,10 @@ public:
 	bool CleanUp();
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
-	float CollisionCorrectionDown();
-	float CollisionCorrectionRight();
-	float CollisionCorrectionLeft();
-	float CollisionCorrectionUp();
+	float CollisionCorrectionDown(SDL_Rect);
+	float CollisionCorrectionRight(SDL_Rect);
+	float CollisionCorrectionLeft(SDL_Rect);
+	float CollisionCorrectionUp(SDL_Rect);
 
 	//returns the type of the collider u are on platform or ground
 	COLLIDER_TYPE GetCloserColliderDownType();

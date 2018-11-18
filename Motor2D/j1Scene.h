@@ -11,6 +11,8 @@ private:
 
 public:
 
+	SDL_Texture*			PathTexture;
+
 	j1Scene();
 
 	// Destructor

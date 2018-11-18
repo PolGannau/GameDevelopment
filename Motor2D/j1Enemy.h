@@ -5,6 +5,7 @@
 #include"p2Point.h"
 #include "p2DynArray.h"
 #include "j1Animation.h"
+#include "j1Module.h"
 
 struct InfoFlyEnemy;
 

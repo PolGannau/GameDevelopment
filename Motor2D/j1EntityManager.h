@@ -19,14 +19,14 @@ struct InfoPlayer
 struct InfoFlyEnemy
 {
 	j1Animation		idle, move;
-	fPoint			speed, max_speed, acceleration;
+	fPoint			speed, acceleration;
 	float			trigger;
 };
 
 struct InfoGroEnemy
 {
 	j1Animation		idle, move;
-	fPoint			speed, max_speed, acceleration;
+	fPoint			speed, acceleration;
 	float			trigger;
 };
 

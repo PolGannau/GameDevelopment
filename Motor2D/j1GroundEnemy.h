@@ -12,7 +12,7 @@ class j1GroundEnemy : public j1Enemy
 {
 public:
 
-	j1GroundEnemy(Entity_TYPE, InfoFlyEnemy);
+	j1GroundEnemy(Entity_TYPE, InfoGroEnemy);
 	~j1GroundEnemy();
 
 	bool Start();

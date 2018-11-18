@@ -181,95 +181,88 @@ Collider* j1CollisionManager::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1M
 //the player speed if the distance is smaller so at one point distance will be 0 and the player never collides.
 
 //DOWN
-float j1CollisionManager::CollisionCorrectionDown()
+float j1CollisionManager::CollisionCorrectionDown(SDL_Rect entity_rect)
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type && (colliders[i]->type == COLLIDER_GROUND || colliders[i]->type == COLLIDER_PLATFORM))//We only want to collide this way with ground and platform colliders
-		{ 
-			if (playerRect.x < colliders[i]->rect.x + colliders[i]->rect.w  && playerRect.x + playerRect.w > colliders[i]->rect.x)//We need to filter other colliders that aren't in our x axis
+		{
+			if (entity_rect.x < colliders[i]->rect.x + colliders[i]->rect.w  && entity_rect.x + entity_rect.w > colliders[i]->rect.x)//We need to filter other colliders that aren't in our x axis
 			{
-				float distance = fabs(colliders[i]->rect.y - (playerRect.y + playerRect.h));
+				float distance = fabs(colliders[i]->rect.y - (entity_rect.y + entity_rect.h));
 				if (closer > distance)
 				{
 					closer = distance;
 				}
 			}
 		}
-
 	}
 	return closer;
 }
 
 //UP
-float j1CollisionManager::CollisionCorrectionUp()
+float j1CollisionManager::CollisionCorrectionUp(SDL_Rect entity_rect)
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type == COLLIDER_GROUND)
 		{
-			if ((playerRect.x < colliders[i]->rect.x + colliders[i]->rect.w  && playerRect.x + playerRect.w > colliders[i]->rect.x))
+			if ((entity_rect.x < colliders[i]->rect.x + colliders[i]->rect.w  && entity_rect.x + entity_rect.w > colliders[i]->rect.x))
 			{
-				float distance = fabs((colliders[i]->rect.y+colliders[i]->rect.h)-playerRect.y);
+				float distance = fabs((colliders[i]->rect.y + colliders[i]->rect.h) - entity_rect.y);
 				if (closer > distance)
 				{
 					closer = distance;
 				}
 			}
 		}
-
 	}
 	return closer;
 }
 
 //LEFT
-float j1CollisionManager::CollisionCorrectionLeft()
+float j1CollisionManager::CollisionCorrectionLeft(SDL_Rect entity_rect)
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type == COLLIDER_GROUND)
 		{
-			if (playerRect.y < colliders[i]->rect.y + colliders[i]->rect.h  && playerRect.y + playerRect.h > colliders[i]->rect.y)
+			if (entity_rect.y < colliders[i]->rect.y + colliders[i]->rect.h  && entity_rect.y + entity_rect.h > colliders[i]->rect.y)
 			{
-				float distance = fabs((colliders[i]->rect.x+colliders[i]->rect.w) - playerRect.x);
+				float distance = fabs((colliders[i]->rect.x + colliders[i]->rect.w) - entity_rect.x);
 				if (closer > distance)
 				{
 					closer = distance;
 				}
 			}
 		}
-
 	}
 	return closer;
 }
 
+
 //RIGHT
-float j1CollisionManager::CollisionCorrectionRight()
+float j1CollisionManager::CollisionCorrectionRight(SDL_Rect entity_rect)
 {
 	float closer = 1000.F;
-	SDL_Rect playerRect = App->entitymanager->player->collider->rect;
 
 	for (int i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] != nullptr && colliders[i]->type == COLLIDER_GROUND)
 		{
-			if (playerRect.y < colliders[i]->rect.y + colliders[i]->rect.h  && playerRect.y + playerRect.h > colliders[i]->rect.y)
+			if (entity_rect.y < colliders[i]->rect.y + colliders[i]->rect.h  && entity_rect.y + entity_rect.h > colliders[i]->rect.y)
 			{
-				float distance = fabs(colliders[i]->rect.x - (playerRect.x + playerRect.w));
+				float distance = fabs(colliders[i]->rect.x - (entity_rect.x + entity_rect.w));
 				if (closer > distance)
 				{
 					closer = distance;
 				}
 			}
 		}
-
 	}
 	return closer;
 }

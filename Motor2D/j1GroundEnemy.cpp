@@ -11,7 +11,7 @@
 #include "j1Scene.h"
 #include "Brofiler/Brofiler.h"
 
-j1GroundEnemy::j1GroundEnemy(Entity_TYPE type, InfoFlyEnemy GroundEInfo)
+j1GroundEnemy::j1GroundEnemy(Entity_TYPE type, InfoGroEnemy GroundEInfo)
 {
 	LOG("Loading Ground Enemies...");
 	speed_entity = GroundEInfo.speed;
@@ -24,7 +24,7 @@ j1GroundEnemy::j1GroundEnemy(Entity_TYPE type, InfoFlyEnemy GroundEInfo)
 	idle.loop = move.loop = true;
 
 	currentAnimation = &idle;
-	texture = App->tex->Load("textures/brainmonster.png");
+	texture = App->tex->Load("textures/rat.png");
 
 	collider = App->collision->AddCollider({ (int)position.x,(int)position.y,32,32 }, COLLIDER_ENEMY, this);
 }
@@ -117,8 +117,23 @@ bool j1GroundEnemy::CleanUp()
 
 void j1GroundEnemy::OnCollision(Collider * coll1, Collider * coll2)
 {
+	switch (coll1->type)
+	{
+	case COLLIDER_PLAYER:
+		break;
+	default:
+		break;
+	}
 }
 
 void j1GroundEnemy::Path(const p2DynArray<iPoint>* path)
 {
+	if (path->Count() > 0)
+	{
+		for (int i = 0; i < path->Count(); ++i)
+		{
+			iPoint Pos = App->map->MapToWorld(path->At(i)->x, path->At(i)->y);
+			App->render->Blit(App->scene->PathTexture, Pos.x, Pos.y);
+		}
+	}
 }

@@ -39,6 +39,36 @@ bool j1EntityManager::Awake(pugi::xml_node& node)
 		}
 	}
 
+	pugi::xml_node ground_enemy = node.child("ground_enemy");
+	GroundEInfo.acceleration.x = ground_enemy.child("acceleration").attribute("x").as_float();
+	GroundEInfo.acceleration.y = ground_enemy.child("acceleration").attribute("y").as_float();
+	GroundEInfo.speed.x = ground_enemy.child("speed").attribute("x").as_float();
+	GroundEInfo.speed.y = ground_enemy.child("speed").attribute("y").as_float();
+	GroundEInfo.trigger = ground_enemy.child("range").attribute("value").as_float();
+	for (pugi::xml_node rect2 = ground_enemy.child("animation").child("rect"); rect2; rect2 = rect2.next_sibling("rect"))
+	{
+		if (rect2.attribute("id").as_int() == 1)
+			GroundEInfo.idle.PushBack({ rect2.attribute("x").as_int(),rect2.attribute("y").as_int(),rect2.attribute("w").as_int(),rect2.attribute("h").as_int() });
+
+		if (rect2.attribute("id").as_int() == 2)
+			GroundEInfo.move.PushBack({ rect2.attribute("x").as_int(),rect2.attribute("y").as_int(),rect2.attribute("w").as_int(),rect2.attribute("h").as_int() });
+	}
+
+	pugi::xml_node fly_enemy = node.child("fly_enemy");
+	FlyEInfo.acceleration.x = fly_enemy.child("acceleration").attribute("x").as_float();
+	FlyEInfo.acceleration.y = fly_enemy.child("acceleration").attribute("y").as_float();
+	FlyEInfo.speed.x = fly_enemy.child("speed").attribute("x").as_float();
+	FlyEInfo.speed.y = fly_enemy.child("speed").attribute("y").as_float();
+	FlyEInfo.trigger = fly_enemy.child("range").attribute("value").as_float();
+	for (pugi::xml_node rect2 = fly_enemy.child("animation").child("rect"); rect2; rect2 = rect2.next_sibling("rect"))
+	{
+		if (rect2.attribute("id").as_int() == 1)
+			GroundEInfo.idle.PushBack({ rect2.attribute("x").as_int(),rect2.attribute("y").as_int(),rect2.attribute("w").as_int(),rect2.attribute("h").as_int() });
+
+		if (rect2.attribute("id").as_int() == 2)
+			GroundEInfo.move.PushBack({ rect2.attribute("x").as_int(),rect2.attribute("y").as_int(),rect2.attribute("w").as_int(),rect2.attribute("h").as_int() });
+	}
+
 	CreateEntity(Entity_TYPE::PLAYER);
 
 

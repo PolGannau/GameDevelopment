@@ -173,7 +173,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 		speed.x = floor(-max_speed.x*dt);
 		if (!god_mode) // we won't check for collisions while we're in godmode
 		{
-			float distance = App->collision->CollisionCorrectionLeft();
+			float distance = App->collision->CollisionCorrectionLeft(collider->rect);
 			if (-distance > speed.x)
 			{
 				speed.x = -distance;
@@ -187,7 +187,7 @@ void j1Player::CheckMHorizontalMovement(float dt)
 		speed.x = floor(max_speed.x*dt);
 		if (!god_mode)// we won't check for collisions while we're in godmode
 		{
-			float distance = App->collision->CollisionCorrectionRight();
+			float distance = App->collision->CollisionCorrectionRight(collider->rect);
 			if (distance < speed.x)
 			{
 				speed.x = distance;
@@ -237,7 +237,7 @@ void j1Player::CheckState(float dt)
 		if (speed.y > 0)
 		{
 
-			float distance = App->collision->CollisionCorrectionDown();
+			float distance = App->collision->CollisionCorrectionDown(collider->rect);
 			if (distance < speed.y)
 			{
 				speed.y = distance;
@@ -246,7 +246,7 @@ void j1Player::CheckState(float dt)
 		}
 		else if (speed.y < 0)
 		{
-			float distance = App->collision->CollisionCorrectionUp();
+			float distance = App->collision->CollisionCorrectionUp(collider->rect);
 			if (-distance > speed.y)
 			{
 				speed.y = -distance;
