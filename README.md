@@ -47,3 +47,8 @@ IMPORTANT: This game was developed through a fork of classmates game.
 > _Github profile: https://github.com/MarcRosellH
 - Programming: Pol Gannau Coma
 > _Github profile: https://github.com/PolGannau
+
+## Accomplishments from each team member.
+- Marc Rosell: Ground enemy, full entites, some brofiler.
+- Pol Gannau: Normalize frames and dt, flying enemy, some brofiler.
+- Both: Tried to implement the pathfinding.
