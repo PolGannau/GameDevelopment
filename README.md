@@ -25,6 +25,7 @@ IMPORTANT: This game was developed through a fork of classmates game.
 - F6 Load the saved state
 - F9 Switch between viewing/not viewing colliders and pathfinding
 - F10 GodMode (You don't fall and go through colliders)
+- F11 Vsyng change from 30/60
 
 ## Innovations
 - The player can go down through floating platforms
@@ -49,6 +50,6 @@ IMPORTANT: This game was developed through a fork of classmates game.
 > _Github profile: https://github.com/PolGannau
 
 ## Accomplishments from each team member.
-- Marc Rosell: Ground enemy, full entites, some brofiler.
+- Marc Rosell: Ground enemy, full entites, some brofiler, vSync.
 - Pol Gannau: Normalize frames and dt, flying enemy, some brofiler.
 - Both: Tried to implement the pathfinding.
