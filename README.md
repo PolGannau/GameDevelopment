@@ -1,5 +1,11 @@
-# Akuji the HedgeHog
+﻿# Akuji the HedgeHog
 Akuji the HedgeHog is a platformer game inspired by Akuji the Demon and the series of Sonic games.This game has been created by two students from CITM, as part of the Development subject.
+
+IMPORTANT: This game was developed through a fork of classmates game. 
+
+## The original repository: https://github.com/Marcgs96/Game-Development-Game
+
+## And our repository: https://github.com/PolGannau/GameDevelopment
 
 ## How to play:
 
@@ -17,7 +23,7 @@ Akuji the HedgeHog is a platformer game inspired by Akuji the Demon and the seri
 - F4 Skip to the next/previous level
 - F5 Save the current state
 - F6 Load the saved state
-- F9 Switch between viewing/not viewing colliders
+- F9 Switch between viewing/not viewing colliders and pathfinding
 - F10 GodMode (You don't fall and go through colliders)
 
 ## Innovations
@@ -36,6 +42,8 @@ Akuji the HedgeHog is a platformer game inspired by Akuji the Demon and the seri
 > _@ivijfproductions on instagram_
 - Audio from:
 > _https://www.bfxr.net/_
-
-## Find this project's repository in:
-https://github.com/Marcgs96/Game-Development-Game
+------------------------------------------------------------------------------
+- Programming: Marc Rosell Hernandez
+> _Github profile: https://github.com/MarcRosellH
+- Programming: Pol Gannau Coma
+> _Github profile: https://github.com/PolGannau

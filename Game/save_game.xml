@@ -4,15 +4,12 @@
 	<window />
 	<textures />
 	<audio />
-	<:anonymous />
+	<collision />
 	<map />
 	<:anonymous />
-  <player>
-    <player x="180" y="1094.46545" />
-  </player>
+	<entities />
 	<scene id="1" />
 	<pathfinding />
-	<entities />
 	<renderer>
 		<camera x="0" y="-352" />
 	</renderer>
