@@ -1,0 +1,32 @@
+<scene>
+  <level name="level1">
+    <entities>
+        <player x="60" y="384"/>
+        <bat x="300" y="250"/>
+        <bat x="1088" y="64"/>
+        <bat x="2300" y="200"/>
+        <bat x="3424" y="96"/>
+        <bat x="3968" y="352"/>
+        <zombie x="720" y="288"/>
+        <zombie x="1888" y="224"/>
+        <zombie x="2976" y="320"/>
+        <zombie x="3840" y="96"/>
+        <zombie x="4544" y="320"/>
+    </entities>
+    </level>
+  
+  <level name="level2">
+    <entities>
+        <player x="60" y="384"/>
+        <bat x="704" y="384"/>
+        <bat x="1728" y="160"/>
+        <bat x="2496" y="320"/>
+        <zombie x="160" y="448"/>
+        <zombie x="820" y="224"/>
+        <zombie x="1472" y="448"/>
+     
+    </entities>
+  </level>
+  
+  
+ </scene>

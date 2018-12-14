@@ -1,55 +1,92 @@
-﻿# Akuji the HedgeHog
-Akuji the HedgeHog is a platformer game inspired by Akuji the Demon and the series of Sonic games.This game has been created by two students from CITM, as part of the Development subject.
+# Spooky Skeleton - PlatformGame
 
-IMPORTANT: This game was developed through a fork of classmates game. 
+## Introduction
+Spooky Skeleton is a horitzontal-scorilling platform game in 2D.
 
-## The original repository: https://github.com/Marcgs96/Game-Development-Game
+There is one playable character, a skeleton, and two different levels with a spooky atmosphere.
 
-## And our repository: https://github.com/PolGannau/GameDevelopment
+The first level is set inside a cave, and the second level is set in the outside of that cave.
+
+
+## Installation
+Decompress the .zip file in any directory and execute the executable inside the decompressed folder.
+
 
 ## How to play:
+[SPACE] = Jump
 
-### Input:
- - A: Move left
- - D: Move right
- - S: Go down on floating platforms
- - Space: Jump
- _While in godmode:_
- - Space: Toggle between floating up/down
- 
-### Debugging input:
-- F1 Restart from the first level.
-- F2 Restart from the current level
-- F4 Skip to the next/previous level
-- F5 Save the current state
-- F6 Load the saved state
-- F9 Switch between viewing/not viewing colliders and pathfinding
-- F10 GodMode (You don't fall and go through colliders)
-- F11 Vsyng change from 30/60
+[LEFT_ARROW] = Move left
 
-## Innovations
-- The player can go down through floating platforms
+[RIGHT_ARROW] = Move right
 
-## Credits
-- Programming: Marc Guillén Saltó
-> _Github profile: https://github.com/Marcgs96_
-- Programming: Eric Jiménez Pérez
-> _Github profile: https://github.com/EricJPbunny_
-- Art from Akuji the Demon(ripped by: MagicMaker):
-> _https://www.spriters-resource.com/pc_computer/akujidemon/sheet/32862/_
-- Player at from Sonic Advance 3 (ripped by: SonicDash57):
-> _https://www.spriters-resource.com/game_boy_advance/sonicadv3/sheet/109683/_
-- Music: Ivan Jiménez Fernandez
-> _@ivijfproductions on instagram_
-- Audio from:
-> _https://www.bfxr.net/_
-------------------------------------------------------------------------------
-- Programming: Marc Rosell Hernandez
-> _Github profile: https://github.com/MarcRosellH
-- Programming: Pol Gannau Coma
-> _Github profile: https://github.com/PolGannau
+[Q] = Attack 
 
-## Accomplishments from each team member.
-- Marc Rosell: Ground enemy, full entites, some brofiler, vSync.
-- Pol Gannau: Normalize frames and dt, flying enemy, some brofiler.
-- Both: Tried to implement the pathfinding.
+[ESC] = Exit
+
+### Debugging Controls:
+
+[ESC] = Exit
+
+[F1]  = Start from the very first level
+
+[F2]  = Start from the beginning of the current level
+
+[F5]  = Save the current state
+
+[F6]  = Load the previous state
+
+[F8]  = Load Level 2
+
+[F9]  = Show collisions and pathfinding
+
+[F10] = God mode
+
+[F11] = Enable/Disable ?FPS cap to 30
+
+
+### God Mode Controls
+
+[UP_ARROW] = Up
+
+[DOWN_ARROW] = Down
+
+[LEFT_ARROW] = Left
+
+[RIGHT_ARROW] = Right
+
+## Find this project on github:
+https://github.com/YessicaSD/PlatformGame
+
+## Credits:
+- Yessica Servin Dominguez 
+	Find her on:
+	Github: https://github.com/YessicaSD
+
+- Pol Recasens Sarra 
+	Find him on:
+	Github: https://github.com/PolRecasensSarra
+
+## What have done each member:
+	Yessica Servin:
+		- Save and Load
+		- Walking enemy(Zombie)
+		- Entities sistem
+		- Implementation of dt
+		- Limit the framerate
+		- Change the player to an entity
+		- UML File of entities
+		- Ice 
+		- Add pathFinding Module
+	
+	Pol Recasens:
+		- Modified map levels
+		- Enemy sprite sheet
+		- Enemies positions
+		- Bat entity
+		- Brofiler
+		- Player FX
+		- Pathfinding level 1 and level 2
+
+		
+ 	
+		
