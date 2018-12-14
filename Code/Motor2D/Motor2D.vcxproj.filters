@@ -73,6 +73,18 @@
     <ClCompile Include="j1Fonts.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="j1UIButton.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Label.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="j1GraphicElement.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Bar.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -167,6 +179,18 @@
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="j1UIButton.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Label.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="j1GraphicElement.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Bar.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

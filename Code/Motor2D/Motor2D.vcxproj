@@ -78,10 +78,13 @@
   <ItemGroup>
     <ClCompile Include="EntityBat.cpp" />
     <ClCompile Include="EntityZombie.cpp" />
+    <ClCompile Include="j1Bar.cpp" />
     <ClCompile Include="j1Collision.cpp" />
     <ClCompile Include="j1Entity.cpp" />
     <ClCompile Include="j1Fonts.cpp" />
+    <ClCompile Include="j1GraphicElement.cpp" />
     <ClCompile Include="j1Gui.cpp" />
+    <ClCompile Include="j1Label.cpp" />
     <ClCompile Include="j1Main.cpp" />
     <ClCompile Include="j1App.cpp" />
     <ClCompile Include="j1Audio.cpp" />
@@ -92,6 +95,7 @@
     <ClCompile Include="j1PerfTimer.cpp" />
     <ClCompile Include="j1Timer.cpp" />
     <ClCompile Include="j1Ui.cpp" />
+    <ClCompile Include="j1UIButton.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="j1Render.cpp" />
@@ -105,16 +109,20 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="EntityBat.h" />
     <ClInclude Include="EntityZombie.h" />
+    <ClInclude Include="j1Bar.h" />
     <ClInclude Include="j1Collision.h" />
     <ClInclude Include="j1Entity.h" />
     <ClInclude Include="j1Fonts.h" />
+    <ClInclude Include="j1GraphicElement.h" />
     <ClInclude Include="j1Gui.h" />
+    <ClInclude Include="j1Label.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1ModuleEntity.h" />
     <ClInclude Include="j1Pathfinding.h" />
     <ClInclude Include="j1PerfTimer.h" />
     <ClInclude Include="j1Timer.h" />
     <ClInclude Include="j1Ui.h" />
+    <ClInclude Include="j1UIButton.h" />
     <ClInclude Include="ModuleFadeToBack.h" />
     <ClInclude Include="p2DynArray.h" />
     <ClInclude Include="j1Audio.h" />
