@@ -38,7 +38,4 @@ bool j1Ui::CleanUp()
 	return false;
 }
 
-bool j1Ui::DrawElement()
-{
-	return false;
-}
+void j1Ui::DrawElement() {}
