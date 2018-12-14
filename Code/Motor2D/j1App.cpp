@@ -11,10 +11,12 @@
 #include "j1Map.h"
 #include "ModuleFadeToBack.h"
 #include "j1App.h"
-#include  "j1Collision.h"
+#include "j1Collision.h"
 #include "j1ModuleEntity.h"
 #include "j1Pathfinding.h"
 #include "Scene.h"
+#include "j1Gui.h"
+#include "j1Fonts.h"
 
 #include "Brofiler/Brofiler.h"
 
@@ -36,6 +38,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	entity = new ModuleEnemies();
 	pathfinding = new j1PathFinding();
 	scene = new j1Scene();
+	font = new j1Fonts();
+	gui = new j1Gui();
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
 	AddModule(input);
@@ -48,6 +52,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(pathfinding);
 	AddModule(collision);
+	AddModule(gui);
+	AddModule(font);
 	AddModule(fade);
 	
 	// render last to swap buffer

@@ -20,6 +20,8 @@ class j1Collision;
 class ModuleFadeToBlack;
 class ModuleEnemies;
 class j1PathFinding;
+class j1Fonts;
+class j1Gui;
 
 class j1App
 {
@@ -94,7 +96,9 @@ public:
 	j1Collision*		collision = nullptr;
 	ModuleFadeToBlack*	fade = nullptr;
 	j1PathFinding*		pathfinding = nullptr;
-	j1Scene* scene = nullptr;
+	j1Scene*			scene = nullptr;
+	j1Fonts*			font = nullptr;
+	j1Gui*				gui = nullptr;
 	float				dt = 0.0F;
 private:
 

@@ -64,6 +64,15 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="j1Gui.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Ui.cpp">
+      <Filter>Desenvolupament  ========\Modules\UI\Template</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Fonts.cpp">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -150,6 +159,15 @@
     <ClInclude Include="Scene.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="j1Gui.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Ui.h">
+      <Filter>Desenvolupament  ========\Modules\UI\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Fonts.h">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -169,6 +187,18 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Entities">
       <UniqueIdentifier>{22219bbd-0ca9-409c-972a-1f241fa893a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\UI">
+      <UniqueIdentifier>{2b6f5dda-0a97-47eb-a06a-73b3a2e8fbcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\UI\Elements">
+      <UniqueIdentifier>{3318f978-c524-4090-a751-8a8983d4423e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\UI\Manager">
+      <UniqueIdentifier>{2d2eb5bc-4b46-45c8-bbe7-0df8a956baaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\UI\Template">
+      <UniqueIdentifier>{7107636f-4031-42d6-888b-546da06c4707}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
