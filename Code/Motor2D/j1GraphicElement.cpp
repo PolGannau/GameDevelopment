@@ -32,5 +32,5 @@ void j1GraphinElement::DrawElement()
 	else
 		position = { App->gui->viewPoint.x + position.x,App->gui->viewPoint.y };
 
-	App->render->Blit(App->gui->GetAtlas(), position.x, position.y, &spriteRect, 0.0F);
+	App->render->Blit(App->gui->GetAtlas(), position.x, position.y, &spriteRect, 0.0f);
 }
